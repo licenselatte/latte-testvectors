@@ -1,0 +1,18 @@
+{
+  "name": "invalid_signature",
+  "category": "invalid_signature",
+  "description": "Well-formed JWT (correct header/payload) but the signature segment's bytes are wrong.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "31be44c9e544d35dfef540b10141f437e129083871a099c13a10a522fba3d86e",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.GJN1wva55ZgopIlO8A8zAr7xvB5QZX11zjOi51GO5eAy0qxPVp1Y_9bdZSlSohB56Z7c10KmiwAbe63RsG_xDQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiMzdhNjBlZDc2NWIzNTNkNTNjYWYwZTU0OTUzZTgzN2Q0OTk3NTdkMjg1MzNkODA3MDIwNzkxMzMzYWE4Zjk0OSJ9.jI6pAnr8rFumYH-POfEH1LIoRi9YkRB5Dll-t3fIscLd7Edl2YcyNaxvAbAOuA_Oqs7nAwoHjRA4k_GYgeGyDg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIxMWU4ZjA0ZTg5MzM0ODllNjU3OTY2YmY4ODc3ODk4OWM1MTU1ZDEzMjFhM2E2YzkzMDFlMjc0OGVlOGY2YmM3In0.YfbcRop30JQhePbqkFg0pVIE5VppU7Wpl3-dvoQ_y08ME4CB4iySS9d4pBx0bQWIWJ-PHsYm3Le2XEm9M7N_Dg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI2MTE3OWJhMTg0OGRmNzkyYTIxOWM4NzQ2ODZiNDc1NzRhM2M1YTcxMzkxODY3OWIzYzVkNjFlNzc4NjVlNWI2IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.T7Lb9VVJuzmuy8Wtel4xSZoaEaGXScMMVbyLQ-yGonOyTeDTU85x6vR8MDkfZQALLAAQXWZg3m-uCXDFH9sICA"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

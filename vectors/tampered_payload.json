@@ -1,0 +1,18 @@
+{
+  "name": "tampered_payload",
+  "category": "tampered_payload",
+  "description": "Single bit flipped inside the activation JWT's payload segment after signing; signature no longer matches.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "2c423e038006bc4e7a1a13f67d847a381cf9ccb7877fd885fbd91f9f25a2b578",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.dyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.PyMSESPwmZ5KqPQioEeTMM2UsEqyyvcTxkFqh0EHRKqAVsmaGM81SzVVXfRXAOxBuKqFSYgaXMqEs5Wk1oozCQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiODcyY2E0NmZlNTZiMTIxZmU3NWI0MzJiNGY0NDg0MGYyYjFkMjNiMzJlYTljMWQ1NjljNzViNTI0NzBkYmQxMSJ9.XPw32BTYCjw605aNRXRCk2cYcPKWxwQzeohzYxwf3e1yvmQoy3b9WENEhVRk7NO5zwAllKpUbnwvjHwyQ_BFBA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI5ZGZlZjA1OTIyZjM3NGRkNjg5ZWZmYjdmYzE1YjA2MmI1ZjNmNjAxNDFlNjExMzE2MmJmZjc0YmY0MDk1MjQ1In0.9yHtylZN5G3tE-WjOi8G0aW6Ege3QSbxa2HT6tFplV0O1paS1_Zji1o6Rw0EBU5II5C6RMRroUBZJuJ60o2GBw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJiMmQzNTcxMzBjNDUxZTUzODc3OWYyYzVmYTk5MjZkN2Q3M2Y2OWMyNGQ4NGQ4ZDFmZWM0YjlkNmExYzk1MTlmIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.R_ALmBc4sDViz81s2JlbyiAB1WURTBO8tct8OOBSfy4cUbnXxkqtPA2D576r445HWmscmqw3lG3rAZP8OvrmDA"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

@@ -1,0 +1,18 @@
+{
+  "name": "wrong_verification_key",
+  "category": "wrong_key",
+  "description": "The chain and token are perfectly valid, but the verifier is configured with a different (unrelated) master public key than the one that actually signed the submaster cert.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "2075030ca7dcb0273ef7d60227937c35cf9d512d7add5b0593e1d44fd78567e3",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AQCFIbn3dtd1CIisCdGe0NbWIHzItuJKM6PgGOTLzjrDhtgIxrXsuLqYyHqPjak7HlNZbryYcJf3VZ5TSWG-Bg",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNzE0OWI0MGI1ZDVhOGYxNmIxYTU3MDdjMjQzNzA4MjJiNDNkMWUxN2Q4NjU0OGJmMmQ5NDAyMjVkY2UyYzM3YyJ9.6bCUGvaXSHXbvyzozFOiuyvSw5VUycmJHg5k-9JYXks7eu0qXDnyDA1pDWrN3m_DTAj2KPVSaPNpg30id84ICw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI2NjZhMDhkNmIyOTU0YjFhMzljZGI0ZWFmYmJjZjVmOTU4MWRlOTYyODdmYTc5NTM1OTI3ZTU4YWNkZjI1MmZiIn0.j5G_0UD3ZE6N--G7K7aM8eHOL15EL--wXu8aHOpoDcqOJU7hNBjp_GZhQrHePLlqDti1JKgICyZoX2S9FpFfDA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIwZmFlYWRlMGY3MTZiYTA3NDk5OGUzYTEwZmMwMjAyZjE4NzdiMmM0NTU4ZjRjNDcxMzMwOTEyYzRlMTMwMTQ5IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.67e1yFARx3PLONUJOz6wzdIYYy4yu-zCh1_qIvfIVfk-jspwUxIdwuQVms1uuNM16_ulIRWB0Xq5SAFm7CxmBA"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

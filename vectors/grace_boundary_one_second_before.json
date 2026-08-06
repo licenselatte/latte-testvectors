@@ -1,0 +1,18 @@
+{
+  "name": "grace_boundary_one_second_before",
+  "category": "grace_boundary",
+  "description": "Grace boundary check at now=2026-07-04T11:59:59Z (deadline=iat+7d=2026-07-04T12:00:00Z).",
+  "now": "2026-07-04T11:59:59Z",
+  "master_public_key_hex": "f1937e56f3167e555b39412761281f355a18affc0eb0c46507b11fad30286661",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgyNTYxNjAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.67UbfT5Shr4Hunxetz2pAyXQAYf0X8kWriXpJFSCNRs3FlywLndOPdG2Kd-sXhuwnkT-q5uVMSZaEi1mkb7hCw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiMWI1NTFlNjc1MTRhM2IzMTNlZjgwYTIwNzczNDY5OGI2MzM0YjNjN2FkNjBlZTA0MTViNjE2M2FmOTg0OWM4OSJ9.gcm1NOJOW3ml5BqRjLSkCi-3VGTuwXdXGpOSU_53jKAk4yCUfv_UVHpuOKtKGgFvlbnNuNT1swx2hXjvo_neBA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIzYzNmNzRmYmMzYzBkMmU3ZTZlYTk0ZTRjZWQ5MWMzOWMyZmUyYWEyOTQyZmM0MDA4MmU0NTM1MzY1ZDA4MmNjIn0.EUIUiO7vuMnI_UEu74ly906DpnsbKkqCxSfj5ixonGLprpZoEBBv4wiIHCGh9bvDeVez205j5nvOAfTw4KLaDg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJiNWFiZTAxNjdkNDczYTFlMTQ2YzU5ZjNhNjIxMGU0NTBjZWEyYjkyZTI5NDljMDZiODEwNTVjMWEzNWY3NDYzIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.xAdMKL1axse3Zn-v2o3xrfdtd_DRqvQb_tkgxD1pvubOiSVysVBMy3RF8MB-YYzAHY1R2XNhwUqBp1gBMa2QBQ"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": true
+}

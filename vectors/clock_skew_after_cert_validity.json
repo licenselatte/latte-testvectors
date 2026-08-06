@@ -1,0 +1,18 @@
+{
+  "name": "clock_skew_after_cert_validity",
+  "category": "clock_skew",
+  "description": "Verifying machine's clock is set after the daily cert's own exp; must hard-fail chain verification with zero leeway.",
+  "now": "2026-07-06T12:00:00Z",
+  "master_public_key_hex": "8eed2df778a52267430568a4e119681f3e206046a0f8d4665dc4d8bf9a69b4ba",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMjA5NjAwLCJncmMiOjIxNjAwLCJpYXQiOjE3ODMxNjY0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoiZXhwaXJpbmciLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.UIz3TEjGSAZr0k3BNh6VzaVJuag4ouk_uou0N-2VEMlekDYtEGsOTxX0zLNb2dodFk3U-fOeZYcyMwCqz1ScBw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNmQxMzg1MWJiOTZlOWE3MjEzOGU4Y2M3NjMzMmQ3ODViYTllZWQwMmJmNTMwZDE3OWUyNjAyOGNmZGVmNjBiMCJ9.2SOWYAOIArVjW6xmNQYyIh8U0kcyjX442RrMxlzYAzrReDXxeR0BMD_tLRrfdgqgLKjAfeMyRiocFOiwlxVACA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIxOTIzNWI5NjkzZTM2M2ZhZDc0YWEyOTZkMjFmZGQ3YTM2OTQ2ZDAxZTNkNTZmZjQwMmE5NzA3NjljNjI2NTdlIn0.AE32U6SLfU87fCpDLt8o_s_Y4VjqwRdH1WS3hLYdjZWM2ZmKcIa0_y-kpCRXylTK70yRHxrU5hVZL4tobhiJAg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJlODBjOTVhYmI1YTU4NmQ3MWFiZjk2YzI5MjZjMzlhMzMzNzgwYzdiNmZkZmU0MTcwMWZiODY2NjI5YzFmMjJjIiwiZXhwIjoxNzgzMjUyODAwLCJpYXQiOjE3ODMwODAwMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.b6V40EOjRISZd8rzfrGaRw4TBRDp3uokBRlQx4EHpqiwIcAQNyRvDWplfGQ9NNmeTUUy54P21IyU6ZAiI4nzAA"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

@@ -1,0 +1,18 @@
+{
+  "name": "empty_file",
+  "category": "empty_file",
+  "description": "Completely empty token and cert chain.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "6522f79e8deb393ac0c8f4acea64b843c913182d1b1beeeb6a22b3b5d7d0d210",
+  "machine_id": "test-machine-001",
+  "token": "",
+  "chain": {
+    "submaster": "",
+    "project": "",
+    "daily": ""
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

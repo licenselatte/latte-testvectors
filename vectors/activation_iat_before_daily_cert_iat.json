@@ -1,0 +1,18 @@
+{
+  "name": "activation_iat_before_daily_cert_iat",
+  "category": "broken_cert_chain",
+  "description": "Activation JWT claims to have been issued before the daily cert (its own signer) existed.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "e73f9947c631f5d9827a7280dbff0f0979111c89d32a1b6f33d44b9f557c345e",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzc3MTE4NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.1F4njBbXkapOJKnwCHWS2WfC9sThGOvpUTQrjPjnGseJG-DpjHSzO1lqaQe5sHIKtfkTiDHQUvtYhFDtF7C6DQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiYTgxNTQxMzc3YmEzMzk1ZGZmNjE4ZDJmMTI2MWVjY2M0NmFlY2NmZjFjMDkzMDQzZDc5YTlkY2Y1MDYyZmY3YyJ9.rlM2lKGuSZSebIxB8bmuN-FgiuhgKysekZhK-EVKuXe-z21tM6Y_n8clQWkNbuiyM4TAbZq-hU8WuUifV8qpCw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI1ZTZjZjJiOWJkYzg4MDVjZjlhOTU3NmNkYTYyM2U0ZDVjZmU5ODM1YmUyZTJjNWMyNDg5YjI3ZjRlOWYwZDE5In0.H7s0koBBcXWdEhu53RMCqJI_sf_ract6VvOa6fGtvCegFk97J3r8Opoms5LVOuCiJelWI0ojc5hW462CwPAfCQ",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI5NjU5NGQ2NDFhNThlNmVkNmU0OWM4NjE0NjdkY2RiZDZmYjQyNGIzZWI4ZTU3ZjM1YmY3NjY3NTVjM2U5NzcyIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.4H1Bdzyr4Et-2BeNYGulPTgJqPbC42X9osGiISHmQkecoebqt1IB_JhubGXEW3Q2zpb6DKcJ6zOPkxMWK5LqCg"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

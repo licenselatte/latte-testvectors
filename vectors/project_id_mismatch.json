@@ -1,0 +1,18 @@
+{
+  "name": "project_id_mismatch",
+  "category": "broken_cert_chain",
+  "description": "Project cert's own pid claim disagrees with the activation JWT's pid claim.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "151c6e17ea39942a64e8c950254b14bf5cbde2536e3b963f5ecc35d8e538a897",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.WFzGVRbw4PcY-cwCT2aVeMvdC_LR6T6fewKq6TVFs-2JtWSvUflTnYQNDMg8uao2GZleuPx1SQHfGiFk2lbrDA",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZDZjMjNjNzllYTJhYTZmZmM0OTRiY2ZkMDBmMzdlMGVlMjlmYjM0ZGQxZjEwMGI3ZDJmZmYzYTBiNmM4MGMwMiJ9.j-qM33iGZek8t_Nz1P9d0rP-1CImhtTYlFMH3JlI-af3pW-SSTZET-6Mw7wFZK0J3nEKa7N5siPfNH2sZUWaAg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval85OTk5OTk5OS05OTk5LTk5OTktOTk5OS05OTk5OTk5OTk5OTkiLCJwcGsiOiIxNDAyYmQ3ZmVlOGJlZTEyZjJlNjQ3NjhhNzdhNjhhYzE1ZjU5MjNmM2M5MWRiYmIyM2QwZGI5NDI3NDhjN2M2In0.1-5tpk2xFfywvuWYGt9ywgBXJeXXrF4hVN3L2WZGnSqJ6SfKivOCoqJFs-g1Ar_NbTUzgi49Fn5G2JfYkISiDg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI4Y2UyZDFmODgyZTdhZmQ5YTcxMjY4NzRiZjk4OTc3MDJmODQ3NTZmZThiZGYyOWZjMmRhZTAwYjNhYTg4ZjZlIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.gSxJx0bhUQbT4QyZYGjRUKtkS4d1ZDMD29LpCPsdvUtnyhOJsx85EdRFoMuIoQDuRS0dxHxmupw7VCiHR6u5BQ"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

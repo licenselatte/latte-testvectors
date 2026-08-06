@@ -1,0 +1,18 @@
+{
+  "name": "valid_fresh",
+  "category": "valid_license",
+  "description": "Freshly issued license, verified at the moment of issuance.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "206cc219ebd883e2144d4469af67a240d71d3ed8715b859a1aaf6ced36030cc6",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwicG1kIjp7InRpZXIiOiJwcm8ifSwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.QKXpmxrnB4G8s0uu1OdPakQME5zG4uhSFKnHbC5xS1Y4YoLerWphguhURuM3gBN6UnuNsHDhh88kcbEzYHKkBg",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjYwYTU4YzllYjgzODJhN2M3MzJiZWFmMzM2NmIxNWI3ZjQwZjBlZDQ1ZGNhZmRkODk0OGE5NmZlMGQ5NTdhMSJ9.PSj33ZCwPEBGePeDbwXxkVNRrtfDreLm7X4zESrDYYKk5kH1kSGgfXDuMeTI8wRgXG7QDOq6_3YBqyADkko7Aw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJiZjFiMzRjMTIyNjExNDRkMDI0NTNlNGY2ZTQ4ZmUzOWJkMGQ1MThiYTkyOWIwMGIwZTRlYzI3OWQ5NGNjODQ1In0._pOjCuNd1L35_v5ABBIzCt0Qi8eppIVtXn3wPApDduy1Nh3-0DKSWUGLWT6dpYsvP4WZfPpC7x2-QFgIrBmkBw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIyOWRmNDMwYmQzNWQxZDI2M2VlMDQyNWY1MmRjYjU2MzBjMTQ1ZDJkMzIxYmViMzM4MWNkZjNjOGNhM2Q0Y2NiIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.xrZlpCfGFX2Q4MAWv7bPQeVUvnGGdxIOzO50ZMBRLhahaURIASa5UaoFToANH-2Z2DZShk7WRXOIQ72qc9cdDQ"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false
+}

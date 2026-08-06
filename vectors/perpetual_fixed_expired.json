@@ -1,0 +1,18 @@
+{
+  "name": "perpetual_fixed_expired",
+  "category": "past_grace_period",
+  "description": "perpetual_fixed license whose exp has already passed; must hard-fail on ExpiresAt even though this type normally skips the grace-deadline check.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "acbd3863f2303dcfe0b8cf7508c823298e1b8c287fe95982da51289e4175ef9c",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMDgwMDAwLCJncmMiOjc3NzYwMDAsImlhdCI6MTc4MDU3NDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwibHR5cGUiOiJwZXJwZXR1YWxfZml4ZWQiLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.df3l1ya8ZxZyN4oaKt89pYWFg1AItGBdSB7l2qpnBiTtZVgUZ4WHx1X99Wjpg0O_dtYTC4rfZQV2z6vKT8aVBg",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZGY2MzFjMzZhZWVjMDRjMGRiMGU0YjM4Yzg4NmIxMTEzZDZiOTE3MjgwZDEyNzZjZjNkMzBiZDUyYzdmNmRjNiJ9.LTXfZKgupruS3ZMd_n5jOLeygMDJ9BrFPA8WdMU_URo7EVVSDn7OK-JimdFE9-0qniBWYHNqtlMP1SxAMANMAg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIwNzA1Y2M1ZGVhOWE5NDBkZWJlZWFjZTFlZTFhNDNhNDI3NWM5N2Q1ZDgxODFlZWFlMzVkZjU2ODQ3NGY4ZDc3In0.Qxf9vn-277HBEhn_rVDhPKLPXGtLpjIG31MAcc-O7RztNqmaoTK9GmUenP5fBCplnxM0pOMbGTs5IfDNBZoIBw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIxZDRkMjZlNzgwY2E5Y2RmYTc3NTU1NmRiZWFmMGE3ZTVmZmM2ZjYwNWFlNDNmYTE1NDQ3YzVmMDcwZTVlYjQ5IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.zV44eqLRtgHbkzfbIQKUsucjIO3kLO5DQbg338322_XNh5L_zQMnFCcWCqWZ3zMvekyEXv4EUIVBicZFJMdSAA"
+  },
+  "expect": "reject",
+  "expect_stage": "validate",
+  "expect_reason": "hard_expired",
+  "expect_in_grace_period": false
+}

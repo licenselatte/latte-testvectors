@@ -1,0 +1,18 @@
+{
+  "name": "clock_skew_before_cert_validity",
+  "category": "clock_skew",
+  "description": "Verifying machine's clock is set before the daily cert's own iat; must hard-fail chain verification with zero leeway, even though the activation token itself would otherwise be fine.",
+  "now": "2026-07-02T12:00:00Z",
+  "master_public_key_hex": "b77ba4ba92484da9da5bc811208f7593dca1b577489297f61895f2aaf9f7471d",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMjA5NjAwLCJncmMiOjIxNjAwLCJpYXQiOjE3ODMxNjY0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoiZXhwaXJpbmciLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.xQa7Pvh6A4bDIlZ0bBxr0MCXqtODBpNDq4XKGYTyywu0qhz8bv-FFc9wFbLfVT2rB3rS9Ng8GDkOXUepUkSiAw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiMWQxMTc1NDg1OWM0MjZhM2JjYzgwOTRiODc3NjNkNjRkOTZmNjc1ODg4ZjFmYTA1ZGFkMWM5ZTk2YzQ5NWQxOCJ9.0tnhPNzuiS4yekRheuwcbfxV37xN5qBHGi6pJf3fY0MtNNZ7N4wjFtosbQ3kzYr8kX_zry2nNGbBySG2sIK4AA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIyNzUyNWViNjc3NTEyYmJhN2RkM2M3Zjc3NWM3NjI3MjM4NWI5M2YzNTBhZDllOThjNDI2ZDI1Y2VjMmZjODM3In0.MjsFdh5XtnXWVi4BbEvqw8daQDEqsDFZ4tR_Spv77pewObBaU_pK0DnQS6TgcQDpPD29k-8ZQOM3tND_kb-RBg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI2ZTkyZGYxZWNlN2I0OTFkYjZjNDhkOGEwYjc1YzcwYTI1OTVjYzNhMDY4NjkxZGQwMmE0NTY2Njc1OGMyMWZjIiwiZXhwIjoxNzgzMjUyODAwLCJpYXQiOjE3ODMwODAwMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.NUfUCaA_zqqQpaphgibnAUA9XDcWMw9J_Um9EgtbGlPVQndHN9_biiUOclizi2MEhwxlcP_GDM0N_oVSqe9zBQ"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false
+}

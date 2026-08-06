@@ -1,0 +1,163 @@
+[
+  {
+    "category": "valid_license",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "valid_fresh"
+  },
+  {
+    "category": "valid_license",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "valid_in_grace_period"
+  },
+  {
+    "category": "past_grace_period",
+    "expect": "reject",
+    "expect_reason": "grace_expired",
+    "expect_stage": "validate",
+    "name": "expired_past_grace_deadline"
+  },
+  {
+    "category": "past_grace_period",
+    "expect": "reject",
+    "expect_reason": "hard_expired",
+    "expect_stage": "validate",
+    "name": "expired_hard_expiry"
+  },
+  {
+    "category": "valid_license",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "perpetual_fixed_valid"
+  },
+  {
+    "category": "past_grace_period",
+    "expect": "reject",
+    "expect_reason": "hard_expired",
+    "expect_stage": "validate",
+    "name": "perpetual_fixed_expired"
+  },
+  {
+    "category": "tampered_payload",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "tampered_payload"
+  },
+  {
+    "category": "invalid_signature",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "invalid_signature"
+  },
+  {
+    "category": "broken_cert_chain",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "broken_cert_chain"
+  },
+  {
+    "category": "malformed",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "malformed_garbage_token"
+  },
+  {
+    "category": "malformed",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "truncated_token"
+  },
+  {
+    "category": "empty_file",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "empty_file"
+  },
+  {
+    "category": "wrong_key",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "wrong_verification_key"
+  },
+  {
+    "category": "clock_skew",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "clock_skew_before_cert_validity"
+  },
+  {
+    "category": "clock_skew",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "clock_skew_after_cert_validity"
+  },
+  {
+    "category": "clock_skew",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "clock_skew_activation_future_iat_tolerated"
+  },
+  {
+    "category": "broken_cert_chain",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "project_id_mismatch"
+  },
+  {
+    "category": "broken_cert_chain",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "activation_iat_before_daily_cert_iat"
+  },
+  {
+    "category": "broken_cert_chain",
+    "expect": "reject",
+    "expect_reason": "verify_error",
+    "expect_stage": "verify",
+    "name": "grace_period_exceeds_90_day_ceiling"
+  },
+  {
+    "category": "past_grace_period",
+    "expect": "reject",
+    "expect_reason": "machine_id_mismatch",
+    "expect_stage": "validate",
+    "name": "machine_id_mismatch"
+  },
+  {
+    "category": "grace_boundary",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "grace_boundary_exact_deadline"
+  },
+  {
+    "category": "grace_boundary",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "grace_boundary_one_second_before"
+  },
+  {
+    "category": "grace_boundary",
+    "expect": "reject",
+    "expect_reason": "grace_expired",
+    "expect_stage": "validate",
+    "name": "grace_boundary_one_second_after"
+  }
+]

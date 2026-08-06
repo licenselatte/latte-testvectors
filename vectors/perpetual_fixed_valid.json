@@ -1,0 +1,18 @@
+{
+  "name": "perpetual_fixed_valid",
+  "category": "valid_license",
+  "description": "perpetual_fixed license: grc must still be \u003e 0 (validate.Validate checks this unconditionally before branching on LicenseType), but once past that precondition, perpetual_fixed skips the grace-deadline check entirely and only enforces hard expiry.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "36d26cd328653a59ba046c3d2d889cf8be18ad84c5177ca420685640aa05b48e",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjo0MDcwOTA4ODAwLCJncmMiOjc3NzYwMDAsImlhdCI6MTc4MzE2NjQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwibHR5cGUiOiJwZXJwZXR1YWxfZml4ZWQiLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.vWHAFB6IUGaFyHQytQzwlwWPU-G2QHbq9ZGmuKFKH2rTQHCGRVFZkyB5Xtp1SmLzX9cLcjwlSYAWw8fKwhCFBA",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiOTMwZGY4MjlhN2I4MTM4ZTY4N2VkNmVlNDIyYTI2YWFlODVmNWU1YTdmNzAwYTU3YzIyNjU4NTg4ODNhYWU3MiJ9.0hojx3vR7iS6s25qwt-peo-FFAg686Oal8x7vCqplt5D4O_8cn_CabgK5wkt7XrtxIyznUcRn52uweYBrEKWCg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJiZWJjYzYyZjY3N2UwMjdjYmMxOTdkY2ExMzllY2ZmZWM1YjlkNWMxY2ZlNGUwYmFmMjhhNDdhYjBjNWQxMmQ1In0.MNiGwi2kCNgTUp8j4sV8MZYWac5F2wuD_i6xDdi9M2TDgElGREhGZaTi80Jkk0GX_S-mRi58jC3e-1-OI5guAg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI1MzM4M2U1M2JkZjMwZjE3MTEzZjE5ZTBhODc0NDBhNWZkMGUwYzk1OGU1YmNkZDVlNWRkZGMxMzkzMWE0YjYxIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.gt66GjzxRtOxcEvekjy5LYR4gILM4FwAX4S11sVoUI9Mw8ajBoZnZ64DBGL6Xgqk1Xza9HkBtrlGJoIVnmkACA"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false
+}

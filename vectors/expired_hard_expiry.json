@@ -1,0 +1,18 @@
+{
+  "name": "expired_hard_expiry",
+  "category": "past_grace_period",
+  "description": "ExpiresAt is already in the past; must fail on hard expiry.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "8379867f39c4a9fdad6ec8983d89263890045dbd840b8046af7d5e3576195c58",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMDgwMDAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzc5NzEwNDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.H50sp2BvZDzW5cPooSBlaX_PACO1QICktItI_VpMlucmUNQPQ5COuKBH6EzBJLskrPE8CXsNy7CjaFY4MnE6Cg",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjQyNWQxZmYyZGJlMzNjNDk0OWJlMGFhZjc2NWMzMTJhNDczNmI5ODhkNDQ0NWJhOWJkZWQ2OWFkYTgwYTc5MSJ9.TTAQZmgo3fFsugcX4OlJPlLvbzpnSCZPFizab-s-kWT-faqXyrDS8OOESQMJAkZz3guCpqhq8hrleOrpow_WBA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJjMmQzYmUwZGUyNzRjZWNjZWY4NjI1YWE2MTczNGZkYjhlMDYyNDQ0YzRkMzJiOTVhNGY0ZTY3YmZhMjMxOGMwIn0.yKC-o9W_-lSZ-_Bn-2dcSSgvNxKUjrlPEZrtW3TVrqx6rroZFFh6LUrVrItl7JmAwxI_xA43yIobdcFzZWQKBQ",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI5NWMyOGY1NDVlMmVkNDE5MGM2NGIzNjE3ZjhiNTc5NjhlZDUyYzIzZjc3N2Q5OGE4YWQ3YTk2N2IxNTE1YmMwIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.a6MPkaAVHIkVQuNj5ZfXXwK5bJC8E0FGj3BOoLs5Z45iU7NW_2cI4AY8ybZIkd_ahUbD_UfWQRlNUlAYcQhOBA"
+  },
+  "expect": "reject",
+  "expect_stage": "validate",
+  "expect_reason": "hard_expired",
+  "expect_in_grace_period": false
+}

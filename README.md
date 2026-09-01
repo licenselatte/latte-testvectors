@@ -40,9 +40,15 @@ Each `vectors/<name>.json` is:
   "expect": "accept | reject",
   "expect_stage": "none | verify | validate",
   "expect_reason": "see taxonomy below; empty string when not applicable",
-  "expect_in_grace_period": false
+  "expect_in_grace_period": false,
+
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
 }
 ```
+
+`expect_has_entitlements` and `expect_entitlements` are only meaningful for
+an accepted fixture; see "Entitlements" below.
 
 **`now` must be injected as the verifier's current time**, not read from the
 real system clock, that's what makes every fixture reproducible regardless
@@ -77,6 +83,18 @@ for each vectors/*.json (skip manifest.json):
 
     assert fixture.expect == "accept"
     assert in_grace_period(license, now=fixture.now) == fixture.expect_in_grace_period
+
+    assert license.has_entitlements == fixture.expect_has_entitlements
+    assert license.entitlements == fixture.expect_entitlements
+    for key, value in fixture.expect_entitlements:
+        if value is a boolean:
+            assert license.can(key) == value
+            assert license.limit(key) is missing      # no coercion
+        else:
+            assert license.limit(key) == value
+            assert license.can(key) is false          # no coercion
+    assert license.can("no_such_key") is false
+    assert license.limit("no_such_key") is missing
 ```
 
 ## `expect_reason` taxonomy
@@ -105,6 +123,50 @@ stage's four reasons into fewer buckets, or ignoring `now` in favor of the
 real system clock, is not acceptable and breaks the parity guarantee this
 repo exists to provide.
 
+## Entitlements
+
+Six fixtures in the `entitlements` category cover the typed-entitlements
+claim (`ent`) described in `license-latte-api/docs/typed-entitlements.md`.
+Every one of them **accepts**: an entitlement value an SDK cannot represent
+must never invalidate a licence, because the machine holding that licence
+is one nobody can reach to correct the mistake.
+
+| Fixture | Pins |
+|---|---|
+| `entitlements_absent` | No `ent` claim. Every `can()` false, every `limit()` missing, `has_entitlements` false. |
+| `entitlements_bool_and_int` | The happy path, including a *present* `false`. |
+| `entitlements_unlimited` | `-1` round-trips as `-1`, not as a maximum and not as a miss. |
+| `entitlements_malformed_value_dropped` | A string, a fractional number, an object, an array and a null are each dropped; the good keys survive; the licence still accepts. |
+| `entitlements_type_mismatch` | `can()` on an int key and `limit()` on a bool key both miss. `seat_count: 0` and `is_pro: true` are the values that would split five implementations if any of them coerced. |
+| `entitlements_empty_object` | `"ent": {}` is identical to absent for every accessor, and differs only in `has_entitlements`. |
+
+The rules every port must implement, in full:
+
+1. **Never fail on a malformed value.** Drop the entry, keep the licence.
+2. **Absent denies.** `can()` false, `limit()` missing. There is no
+   "unknown means allow": the token is a bearer artefact on the machine of
+   the person it constrains, so if absence granted, stripping the claim
+   would unlock everything.
+3. **No coercion across kinds.** `can()` on an integer is false, not
+   "nonzero is true". `limit()` on a boolean misses, rather than returning
+   0 or 1.
+4. **Byte-exact key comparison.** No case folding, no trimming, no Unicode
+   normalisation. The server enforces `^[a-z][a-z0-9_]{0,63}$` at write
+   time so clients never have to.
+5. **`UNLIMITED` is `-1`,** returned as-is; callers compare against the
+   constant each SDK exports.
+6. **Only whole numbers are integers.** `25` and `25.0` are both the
+   integer 25; `1.5` is dropped. Go's and JavaScript's JSON parsers hand
+   back a float for all three, so a rule that distinguished `25` from
+   `25.0` is one two of the five SDKs could not implement.
+
+`has_entitlements` is a first-class part of the contract, not a
+convenience accessor. Absence denies, so a seller who ships `can()` before
+their installed base has renewed would switch their own feature off for
+every cached token issued before the claim existed. The probe is what lets
+them write "if the token knows about entitlements use them, otherwise keep
+the old behaviour" for one release.
+
 ## Regenerating fixtures
 
 ```sh
@@ -112,7 +174,23 @@ cd generator
 go run .
 ```
 
-This overwrites everything in `vectors/`. After regenerating, every
+This overwrites everything in `vectors/`. Every chain is signed with
+freshly generated keys, so a full run rewrites every fixture even when
+nothing about it changed. That is harmless — the agreement this repo
+exists to prove is over *outcomes*, not over bytes — but it is noise in a
+review, so when adding fixtures without touching the schema, filter
+instead and leave the rest of the vectors alone:
+
+```sh
+cd generator
+go run . -only entitlements_
+```
+
+`manifest.json` is written in full either way — its fields are all
+key-independent — so a filtered run never leaves a name out of the index.
+
+A change to the fixture *schema* (a new `expect_*` field) still needs a
+full run, since every fixture has to carry every field. After regenerating, every
 consuming repo needs the standard two-step bump described in the top-level
 porting task:
 

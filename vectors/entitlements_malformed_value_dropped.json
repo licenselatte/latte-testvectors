@@ -1,0 +1,23 @@
+{
+  "name": "entitlements_malformed_value_dropped",
+  "category": "entitlements",
+  "description": "A string, a fractional number, a nested object, an array and a null alongside two good values. Each unrepresentable entry is dropped, the two good ones survive, and the licence still verifies and validates.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "40057da7790a29c3ac43d38a02dc54b531f3ba9fa2a70e3290b39914e46caeeb",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZW50Ijp7ImV4cG9ydF9wZGYiOnRydWUsImxpc3R5IjpbMSwyXSwibWF4X3Byb2plY3RzIjoyNSwibmVzdGVkIjp7ImEiOnRydWV9LCJudWxsZWQiOm51bGwsInJhdGlvIjoxLjUsInRpZXIiOiJwcm8ifSwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.isXdmfSsuPt4GLmVwadIm2iQ27QzmtXlwQzbRvvQARIWIu1wij490NZUWYwZUju26ADlRiYwFW10l5JuxPCmCw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZjkzM2E1ZDJkZjEzMGQzZmExOTZhODI0MzA0NTYzNzBjNDE5ZmY5ZjUwZWU2ZGRlNGQ4OThkZTAxZWRiNzE2NSJ9.L5_4FzkSeD8kI0913GlkjKlbyXWs9qd2MsR7ktGS8aJXYL9PRsT-DxNe5r0OLZj47QN3F2Kn4ripy0kEzg80Cg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIyMGEyMzczZWQ0NDlkMTY3MTBhOTU2NDUxYzVmOTc1NTEwOTI5NjkxOGMwMmUxYTM5M2MyN2I1YTBjNWUxZDA0In0.hdPr97iXwbLbtAE_1li7EKFJgOQbv1CwyCQNQKh9S_jJPwm3INdG-taOaXjp8kzdJY_iQHYoQMKtMeqhQEZcCw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI5NjE2YjZjOTY1ZmNlYjAyYjE4OWU0MjYwODczZmRhNzc5NTllNTcwYjkwODMwMDkzZWJhY2NmMTA1NjVhOGQ3IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.Yi7k6IKLJHfJMG9VJ6GeQz78h3hYxO8n-nFXBcIznhoS_VNWEr9SeuO0t8EIdAs43yMouFIwa1FwDBAULIDfAA"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": true,
+  "expect_entitlements": {
+    "export_pdf": true,
+    "max_projects": 25
+  }
+}

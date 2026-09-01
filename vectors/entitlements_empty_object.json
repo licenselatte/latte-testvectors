@@ -1,0 +1,20 @@
+{
+  "name": "entitlements_empty_object",
+  "category": "entitlements",
+  "description": "An empty ent claim. Identical to entitlements_absent for every can()/limit(), and distinguishable from it only by has_entitlements, which is true here.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "b832d4c65a159f66b7d21352764f704e30b3dfe3130611aa6e4510e0886772b9",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZW50Ijp7fSwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.aCHyeJz_qKruaXys-5VlOq3CfRUaUDLstABtmwG1bWl-orycd6RZAEpMkfDsnnwyQqujtEeXK6OqEO32aG2ACw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjIwNmRjYjVkNDA4NGNkMWRjZGU2ZjBhMDg4NWZkODE1MGFlZDViZTc1MWRlN2I2YzU5ZmM4NGZkZWUxNzVlZCJ9.KaFJ6COqYeZwOEyGqrZAQM5_Zfk3oQMwOxZqtv59HTP3CanpHSkKy-lEl_y-L5oN3CKtcfwmzlh2yMINzk04Cw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJhNTliNjQ5YWI5NDMwMzUyYWUyYTA5ODk4MDIwYWQ1ZTZmZDQzN2M4YzNhZmRlMDg4YzA3N2I5Yjg4MDMwZmYxIn0.FCsEt62NxXPz-SP2PYSMG7CHLH99MJUmMa5Pzd07-GjdAA4OFGCUIII7CxGGr2i8eAezb6gWYEOOY_1iGrlLCQ",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJmYTM3YTc4OWU5NzFkOWQyZGNlYmE4NzJlYjY4OWVkYTc5MGJhNzcxNTNhYmUwMTliZWFjNWIxNDI5ZmI3NTdhIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.IMT8VquZ_2DIC8b2ZRNM4nS2oVcAzSpksxPcQZ3qWti5BJyC07YHVCgY1lP5yrRi5XhEwUU9jOstCoHxpXWGCQ"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": true,
+  "expect_entitlements": {}
+}

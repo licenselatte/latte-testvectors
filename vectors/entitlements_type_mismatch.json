@@ -1,0 +1,23 @@
+{
+  "name": "entitlements_type_mismatch",
+  "category": "entitlements",
+  "description": "can() on an integer key and limit() on a boolean key must both miss. seat_count is 0 (falsy in most languages) and is_pro is a boolean (1-or-0 in some); neither may coerce.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "89cbee87702203149399bef89cd9d6224d8b8c83d1b103a02a471c12ba2411ec",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZW50Ijp7ImlzX3BybyI6dHJ1ZSwic2VhdF9jb3VudCI6MH0sImV4cCI6MTc4NTg0NDgwMCwiZ3JjIjo2MDQ4MDAsImlhdCI6MTc4MzE2NjQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwibHR5cGUiOiJleHBpcmluZyIsIm1pZCI6InRlc3QtbWFjaGluZS0wMDEiLCJwaWQiOiJwcm9qXzExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsInN1YiI6IkFIQUs4NVQ2MjhXWjYzOUNNVkhGOFRORERYMjYwWiJ9.5zHi_i3miaekU9-izYoBST1yg22dr9hEtD6EeFfiUoTfUK4q0UTMuueCFTc1Zfb8soesOgSUBYADZw2k4i0sBA",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiM2U3MzQ2MzBjNmZlMDk5ZTM0MTMxZDE0N2JkOTE3NTMwOTMzZjkyZmE2MzljNzM1ZWQ5YTFhZTQ0MDg2ZWQ1YSJ9.ti_ap-rMElexC40BPjlsQ7A4wJfzQkfO9jMUU5dnUUekjbOBH_BkrwSxtlvJEpWI19SW1lQ4KSX0J4CepthiCg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJjNmJjNzQwYzFkNzE4ZGU2OTVkYTNlM2ExZDg4YmQ1MzkxMTk5OWM1Y2E0YzdiYjZkYmNmMDBkMTY5Y2I1YTEzIn0.5630oPjONTFUpG-oGqZjB8uD9lWy0VXuxc6HssL1DkC5n3Eg4uVvhxupZ10FqkLxCBFAjosrlrnhN0M8_7CJBA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIzMzFiMmMwMGUxYzZhNWY2YWFmNGJkYmI4MjA3ZjM4MjM2NDk4NzVlNzdiZjExZjRiYTE4YTRkNzRmZWE4NjVmIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.YeRLRgyYfj8AP7P_lEVWG8542tYmsjlNSrbGASBTQ1YYhgJ83O1cWz8dBw0TBy9Vh4Ny94_VV_nZ-rE5hB-cBg"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": true,
+  "expect_entitlements": {
+    "is_pro": true,
+    "seat_count": 0
+  }
+}

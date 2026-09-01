@@ -1,0 +1,20 @@
+{
+  "name": "entitlements_absent",
+  "category": "entitlements",
+  "description": "No ent claim at all. Every can() is false, every limit() misses, and has_entitlements is false -- the probe a seller branches on while their installed base renews.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "e7e4852e55297627e654f93a2c03ea2c2bb79e7f982631b6c7e3d2d79aca650f",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.a6udYq82vomUewXqjR6e8AgYiClCp9hoSYIiNtRz6e9iEdk2dt6xvVnPHhYlglBJADOWD-C-Riuec30Ju0V3Bw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZTUwNDJmMDMyY2E1ZDIxYzJmZWU1Nzc2OTVhMDA1Zjk0NjhmYWZiOWEyMGNiMzljNWVhMWM1Y2YxNWU0MjMyOCJ9.7Qtj8MyF4QPb-oa_po9UiIGdkzBUSIfBGhMwlVCRrEk-SCKBPSiEgpAaJPiNET60nY_vP2A5asdTXFdmg6MuDQ",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIxMGY1MDZiMTA5YWFlMGMzMDllNmVlZmVkMDU4NmZlZmIyMzU4MjVkYTA1M2U4Mjg2NTc1YjM0NjFiOWQyN2Y4In0.PmUj2ImyVSbDI6cNSuwzsuRrtX2xLxWN6ppAceRRm3Jlutn8mo04BYenXt4i4heOIgvpVdaq1HOYNZvxeE6LAw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI4MWMyZDBjOWUwZDgzMzcxODljOTYxMDE5OTQyNzM0Yzc2NGNhMmM5NmIyNzYwYTY1Yzg0NGJjMTg0NDNiM2Q4IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.vMYNp9oIC6E3_1oNf0JRtx8rmX3xuJkrC2goWJTsnzusMG1fYmtPbuC2t9YwVNRKPNZkP5RMdYJMN50dSRz-AA"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

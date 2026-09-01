@@ -1,0 +1,23 @@
+{
+  "name": "entitlements_unlimited",
+  "category": "entitlements",
+  "description": "The unlimited sentinel. limit(\"max_seats\") must return -1 exactly, not a maximum and not a miss; callers compare it against the SDK's UNLIMITED constant.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "07ca49f00788f1287a64006b1aaa3800e51dcb2887477f1b9b16b0ea7b2c7ba1",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZW50Ijp7Im1heF9wcm9qZWN0cyI6MjUsIm1heF9zZWF0cyI6LTF9LCJleHAiOjE3ODU4NDQ4MDAsImdyYyI6NjA0ODAwLCJpYXQiOjE3ODMxNjY0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoiZXhwaXJpbmciLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.7X6QmI0xQ96s25SVr8TUMkQ2JD4YmMK3uhewOS1yPogrpfL4Tu7zBxCwHbq20f2WKfuVfjaaiSar9-NtHbKeCw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiYWIxYWJhMjc5YTkzNTdiYzJmMjhiNGNiNTE0MDczOWZmM2QyOTM0MTY2MTZmYzM3ZTVlOTgzYzFjYzA0OTg5NSJ9.hM3gjim_G9IfwTpSIsRY4fNcBafLT3f8t29Lx5kvm_dEQJNcjQpjuUoBwWqohH8SJHa27ko1tLU4GSVwYb1gCA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI0N2VkNzFiZWY0MjIyNmY3MDliOWQwYzFmMmI2YmY5OWIwMjQxNjI5OTkwMGMzMWIzYTkwYjhiYmQ2OTllZTVmIn0.bEP9u2atL-zjGzXP7_g_F5s5eiKF6xrIxG9i36ZbcsAw2Nf2CZAqQr1cVRygWwoliInDNEwnLBXDvHVNa7b1Dw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJjZjdiNzhhY2Y2OWM3NTc0N2UzZjAxOWU5YzRmOWVlZDlkN2FjMWFkNjA0YjUzNjBiNGNjNzhmZWJmMTBhNDQ4IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.Rxa5CbpJhaeBPeCeZzdgO3_Mmk9vW_gSG-K7Upe2ot8LJ4XmJ7Blp8bJG8jedZeZwxyAUtsJnyOLAXctFtsFCg"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": true,
+  "expect_entitlements": {
+    "max_projects": 25,
+    "max_seats": -1
+  }
+}

@@ -159,5 +159,47 @@
     "expect_reason": "grace_expired",
     "expect_stage": "validate",
     "name": "grace_boundary_one_second_after"
+  },
+  {
+    "category": "entitlements",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "entitlements_absent"
+  },
+  {
+    "category": "entitlements",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "entitlements_bool_and_int"
+  },
+  {
+    "category": "entitlements",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "entitlements_unlimited"
+  },
+  {
+    "category": "entitlements",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "entitlements_malformed_value_dropped"
+  },
+  {
+    "category": "entitlements",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "entitlements_type_mismatch"
+  },
+  {
+    "category": "entitlements",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "entitlements_empty_object"
   }
 ]

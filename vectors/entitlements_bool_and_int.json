@@ -1,0 +1,24 @@
+{
+  "name": "entitlements_bool_and_int",
+  "category": "entitlements",
+  "description": "Happy path: one true boolean, one false boolean, one integer. can(\"export_pdf\") is true, can(\"beta_ui\") is false, limit(\"max_projects\") is 25.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "d0393659fb80097908b4a72722150fb5d18d620104a1cc5f5850bf7bb30b4e19",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZW50Ijp7ImJldGFfdWkiOmZhbHNlLCJleHBvcnRfcGRmIjp0cnVlLCJtYXhfcHJvamVjdHMiOjI1fSwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.xru4vYJeWuSrN9dnJwimUdYhTnh_jH0hNAtor-ScZ3B5Dt25eyqS38GSgyE2PEP1qMeOmBR5hRaVxcWAcEhpDg",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiOGUyNGFkMDJhNTE0YzA4OWRhMTA1ZmJlM2VkMjY0NTczZDMzYWNkNWFjZjk1Yzc4YzA2YWRkOTVkY2Y4MDQ3NCJ9.ZIpYIgZ_SswcWUBUzfU1O__t4yBp2-aNKbJf74TNz6HE1kw1-V2IkQqBcntNr_j3V9CU8GnLwkOhMZmtzoxgAg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI5N2UwMzE1MzgwMTZjYTA3YmI2ODRlOWYyYjI5Y2VjMTc3ZTJmNTY4ZmE3ZTNkNjgxMTY1YWNjNjc4ZTMxMWU4In0.WkgQmCw10EPuodBHJrkbmvDKboGcnj4cdcS5zsIuor5mbsgCKHiyyYoOFFguZhcHAX7_Z6JglivJOLX3vJ6cAg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJkYzlkMzBlZjlhZjVlOGNjMDhhNjA4Zjg0MmMyYTdkYjIxOTYxMTJmMTFjYzQ3ZDBjYjU5NTYzYWEyNTAxZDEwIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.BsVtyyXxCwuni7mhznEnfEEJEQz9bzDUEIzDPb6kcpowhyg80UphakprqeFTWy6eXX1LIfk15dSo1u6hyRJBBg"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": true,
+  "expect_entitlements": {
+    "beta_ui": false,
+    "export_pdf": true,
+    "max_projects": 25
+  }
+}

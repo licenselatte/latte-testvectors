@@ -14,9 +14,11 @@ import (
 	"crypto/ed25519"
 	"encoding/hex"
 	"encoding/json"
+	"flag"
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 	"time"
 
 	"github.com/golang-jwt/jwt/v5"
@@ -145,6 +147,16 @@ type activationOpts struct {
 	ltype string
 	machineID string
 	metadata map[string]string
+
+	// entitlements becomes the `ent` claim (docs/typed-entitlements.md §2.1).
+	// It is typed map[string]any rather than a typed value struct precisely
+	// so a fixture can put a string, a float or a nested object in there and
+	// pin what every SDK must do with it: drop the entry, keep the licence.
+	entitlements map[string]any
+	// hasEntitlements emits the claim even when entitlements is empty. An
+	// absent claim and `"ent": {}` deny identically, so only the presence
+	// probe can tell them apart -- which is the distinction it exists for.
+	hasEntitlements bool
 }
 
 func signActivation(cs chainSet, o activationOpts) string {
@@ -162,11 +174,18 @@ func signActivation(cs chainSet, o activationOpts) string {
 	if o.metadata != nil {
 		claims["pmd"] = o.metadata
 	}
+	if o.hasEntitlements {
+		ent := o.entitlements
+		if ent == nil {
+			ent = map[string]any{}
+		}
+		claims["ent"] = ent
+	}
 	return sign(cs.daily.priv, claims)
 }
 
 // fixture is the canonical, language-agnostic test-vector shape documented
-// in SPEC.md section 2.1.
+// in SPEC.md section 2.3.
 type fixture struct {
 	Name        string    `json:"name"`
 	Category    string    `json:"category"`
@@ -189,12 +208,46 @@ type fixture struct {
 	ExpectStage      string `json:"expect_stage"`      // "none" | "verify" | "validate"
 	ExpectReason     string `json:"expect_reason"`     // see README taxonomy; "" when ExpectStage == "verify" or "none" and accepted
 	ExpectInGrace    bool   `json:"expect_in_grace_period"`
+
+	// ExpectHasEntitlements is the presence probe: true iff the token
+	// carried an `ent` claim at all, empty object included. It is not
+	// derivable from ExpectEntitlements, since an absent claim and an
+	// empty one both resolve to no entitlements (§2.3, §6.3).
+	ExpectHasEntitlements bool `json:"expect_has_entitlements"`
+	// ExpectEntitlements is the resolved map after the SDK has dropped
+	// every value that is neither a boolean nor an integer. Always an
+	// object, never null, so a consumer can iterate it unconditionally.
+	ExpectEntitlements map[string]any `json:"expect_entitlements"`
+}
+
+// withEnt annotates a fixture with its expected entitlement outcome. Kept as
+// a post-hoc setter rather than two more parameters on mk(), which already
+// takes ten.
+func (f fixture) withEnt(has bool, ent map[string]any) fixture {
+	f.ExpectHasEntitlements = has
+	if ent != nil {
+		f.ExpectEntitlements = ent
+	}
+	return f
 }
 
 func main() {
+	// Every chain here is signed with freshly generated keys, so a full run
+	// rewrites every fixture byte-for-byte even when nothing about them
+	// changed. -only exists so that *adding* fixtures does not invalidate
+	// the ones five SDKs have already agreed on: the manifest is still
+	// written in full (its fields are all key-independent), only the
+	// matching vector files are.
+	only := flag.String("only", "", "write only fixtures whose name contains this substring; the manifest is always written in full")
+	out := flag.String("out", "", "output directory (default ../vectors, or the first positional argument)")
+	flag.Parse()
+
 	outDir := "../vectors"
-	if len(os.Args) > 1 {
-		outDir = os.Args[1]
+	if arg := flag.Arg(0); arg != "" {
+		outDir = arg
+	}
+	if *out != "" {
+		outDir = *out
 	}
 	if err := os.MkdirAll(outDir, 0o755); err != nil {
 		panic(err)
@@ -487,9 +540,162 @@ func main() {
 		fixtures = append(fixtures, mkBoundary("grace_boundary_one_second_after", iat.Add(7*24*time.Hour).Add(time.Second), "reject", "grace_expired", false))
 	}
 
+	// --- entitlements (docs/typed-entitlements.md §4.4) ---
+	//
+	// Six fixtures pinning the whole SDK contract, because the interesting
+	// half of this feature is what an SDK does with input it does not like.
+	// Every one of them is an *accept*: a malformed entitlement value must
+	// never take a working product offline (§2.5).
+	{
+		// The pre-entitlements world, and the reason HasEntitlements exists.
+		// An old token, or a seller who has set nothing: every key denies,
+		// and the probe says so, so an application can keep its legacy
+		// behaviour for one release while its installed base renews (§6.3).
+		cs := buildStandardChain()
+		tok := signActivation(cs, activationOpts{
+			iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+		})
+		fixtures = append(fixtures, mk(cs, tok, "entitlements_absent", "entitlements",
+			"No ent claim at all. Every can() is false, every limit() misses, and has_entitlements is false -- the probe a seller branches on while their installed base renews.",
+			anchor, machineID, "accept", "none", "", false).
+			withEnt(false, nil))
+	}
+	{
+		// The happy path: both kinds, and a false that is present rather
+		// than absent. `beta_ui: false` and an unset key both deny, but only
+		// the first is in the map -- a distinction a seller reading the map
+		// directly can act on.
+		cs := buildStandardChain()
+		tok := signActivation(cs, activationOpts{
+			iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+			hasEntitlements: true,
+			entitlements: map[string]any{
+				"export_pdf":   true,
+				"beta_ui":      false,
+				"max_projects": 25,
+			},
+		})
+		fixtures = append(fixtures, mk(cs, tok, "entitlements_bool_and_int", "entitlements",
+			"Happy path: one true boolean, one false boolean, one integer. can(\"export_pdf\") is true, can(\"beta_ui\") is false, limit(\"max_projects\") is 25.",
+			anchor, machineID, "accept", "none", "", false).
+			withEnt(true, map[string]any{
+				"export_pdf":   true,
+				"beta_ui":      false,
+				"max_projects": 25,
+			}))
+	}
+	{
+		// -1 is the unlimited sentinel and is returned *as-is*. An SDK must
+		// not translate it to a maximum, to null, or to an absent key: the
+		// caller compares against the exported UNLIMITED constant (§1.2).
+		cs := buildStandardChain()
+		tok := signActivation(cs, activationOpts{
+			iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+			hasEntitlements: true,
+			entitlements: map[string]any{
+				"max_seats":    -1,
+				"max_projects": 25,
+			},
+		})
+		fixtures = append(fixtures, mk(cs, tok, "entitlements_unlimited", "entitlements",
+			"The unlimited sentinel. limit(\"max_seats\") must return -1 exactly, not a maximum and not a miss; callers compare it against the SDK's UNLIMITED constant.",
+			anchor, machineID, "accept", "none", "", false).
+			withEnt(true, map[string]any{
+				"max_seats":    -1,
+				"max_projects": 25,
+			}))
+	}
+	{
+		// Every unrepresentable shape JSON can produce, in one token. Each
+		// bad entry vanishes; the good one survives; the licence still
+		// accepts. Rejecting the token instead would take a shipped product
+		// offline over a data-entry mistake on a machine nobody can reach
+		// (§2.5).
+		//
+		// 1.5 is here for the float rule specifically: a *fractional* number
+		// is dropped, while a whole-valued one (25.0) is an integer, because
+		// Go's and JavaScript's JSON parsers cannot tell 25 from 25.0 and a
+		// rule they cannot implement is not a rule.
+		cs := buildStandardChain()
+		tok := signActivation(cs, activationOpts{
+			iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+			hasEntitlements: true,
+			entitlements: map[string]any{
+				"export_pdf":    true,
+				"max_projects":  25,
+				"tier":          "pro",
+				"ratio":         1.5,
+				"nested":        map[string]any{"a": true},
+				"listy":         []any{1, 2},
+				"nulled":        nil,
+			},
+		})
+		fixtures = append(fixtures, mk(cs, tok, "entitlements_malformed_value_dropped", "entitlements",
+			"A string, a fractional number, a nested object, an array and a null alongside two good values. Each unrepresentable entry is dropped, the two good ones survive, and the licence still verifies and validates.",
+			anchor, machineID, "accept", "none", "", false).
+			withEnt(true, map[string]any{
+				"export_pdf":   true,
+				"max_projects": 25,
+			}))
+	}
+	{
+		// No coercion across kinds (§4.3 rule 3). seat_count is 0, which is
+		// falsy in three of the five languages, and is_pro is a boolean,
+		// which is 1-or-0 in two of them. Both must miss rather than
+		// convert: this is the exact case that would split five
+		// implementations quietly.
+		cs := buildStandardChain()
+		tok := signActivation(cs, activationOpts{
+			iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+			hasEntitlements: true,
+			entitlements: map[string]any{
+				"is_pro":     true,
+				"seat_count": 0,
+			},
+		})
+		fixtures = append(fixtures, mk(cs, tok, "entitlements_type_mismatch", "entitlements",
+			"can() on an integer key and limit() on a boolean key must both miss. seat_count is 0 (falsy in most languages) and is_pro is a boolean (1-or-0 in some); neither may coerce.",
+			anchor, machineID, "accept", "none", "", false).
+			withEnt(true, map[string]any{
+				"is_pro":     true,
+				"seat_count": 0,
+			}))
+	}
+	{
+		// "ent": {} behaves identically to an absent claim for can() and
+		// limit(), and differs from it in exactly one observable: the
+		// presence probe. That is the whole reason the probe is a separate
+		// boolean rather than a len(map) check.
+		cs := buildStandardChain()
+		tok := signActivation(cs, activationOpts{
+			iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+			hasEntitlements: true,
+		})
+		fixtures = append(fixtures, mk(cs, tok, "entitlements_empty_object", "entitlements",
+			"An empty ent claim. Identical to entitlements_absent for every can()/limit(), and distinguishable from it only by has_entitlements, which is true here.",
+			anchor, machineID, "accept", "none", "", false).
+			withEnt(true, nil))
+	}
+
 	// Write fixtures + manifest.
 	var manifest []map[string]string
+	written := 0
 	for _, f := range fixtures {
+		// The manifest lists every fixture regardless of -only, so a
+		// filtered run never leaves a name out of the index.
+		manifest = append(manifest, map[string]string{
+			"name": f.Name, "category": f.Category, "expect": f.Expect,
+			"expect_stage": f.ExpectStage, "expect_reason": f.ExpectReason,
+		})
+		if *only != "" && !strings.Contains(f.Name, *only) {
+			continue
+		}
 		data, err := json.MarshalIndent(f, "", "  ")
 		if err != nil {
 			panic(err)
@@ -498,17 +704,14 @@ func main() {
 		if err := os.WriteFile(path, data, 0o644); err != nil {
 			panic(err)
 		}
-		manifest = append(manifest, map[string]string{
-			"name": f.Name, "category": f.Category, "expect": f.Expect,
-			"expect_stage": f.ExpectStage, "expect_reason": f.ExpectReason,
-		})
+		written++
 	}
 	manifestData, _ := json.MarshalIndent(manifest, "", "  ")
 	if err := os.WriteFile(filepath.Join(outDir, "manifest.json"), manifestData, 0o644); err != nil {
 		panic(err)
 	}
 
-	fmt.Printf("wrote %d fixtures + manifest.json to %s\n", len(fixtures), outDir)
+	fmt.Printf("wrote %d of %d fixtures + manifest.json to %s\n", written, len(fixtures), outDir)
 }
 
 func mapStage(expect string) string {
@@ -526,6 +729,8 @@ func mk(cs chainSet, token, name, category, description string, now time.Time, m
 		Token:              token,
 		Expect:             expect, ExpectStage: stage, ExpectReason: reason,
 		ExpectInGrace: inGrace,
+		ExpectHasEntitlements: false,
+		ExpectEntitlements:    map[string]any{},
 	}
 	f.Chain.Submaster = cs.submasterCert
 	f.Chain.Project = cs.projectCert

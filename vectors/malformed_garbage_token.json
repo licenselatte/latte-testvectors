@@ -3,16 +3,18 @@
   "category": "malformed",
   "description": "Token is plain garbage text, not JWT-shaped at all.",
   "now": "2026-07-04T12:00:00Z",
-  "master_public_key_hex": "04fd9147768784f3a9f04940093f566c4656855d43b0c4dafceac56935ade6af",
+  "master_public_key_hex": "cc7ffd561c3c13988a40bb42c9923589f40eaec52e90485b17acae63eb239d5b",
   "machine_id": "test-machine-001",
   "token": "not-a-jwt-at-all",
   "chain": {
-    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNWYzOWM5NDQzNzM0NjQ1MjZhMzlkNGQyMDc4MWUxZjgxN2EzNDdmNmYzMDJjOTQ2MzkwZDg2ZjAyODk4YWNjZiJ9.MXw0d8763DED2mPWaCpydNK9buKkqbqYq5O-IQqWeuuq5eLiRD1xO_GTqfmgviCssiLRisbKVKMhNmt1HRL0Ag",
-    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI0ZjgwODJlYTljZjU0NTQ4ODlhOGYyYTZlOTdiYzE4N2FiZGY1Y2E2MzU4YjQxYTE4YjI1NmVhZDA0OGVkMjI1In0.ictJd97jCXlzwmhWQyDoIw1wPgUn4NKPxEUOM765NSngDktV-DymbDvt_4FogV8-bb2ZfQzkNRl5afvegLJQCA",
-    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIyOTMxNGJkMWIzODM2ZWE5Yzg2MjA1MjU3NTcwY2NiYTRjZGE1ZTk1NDAxZDAzOTlhZWRlMWY3MTlhM2Q1NDExIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.WLL9s-kPqE96BsKY3xEUBwgVFcjuFb3bryxbqEvz0bvwsyURUfymGW2V3JCud5kHmh070tZi_ZkgWc-ZAVaDAw"
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjk0MzExNmJmMWIxMDJkNDAxMDJjMjNmOGEyZTdkMzUwNDRlMjJhZmZkZjJjOGIwNTE5YmI3ZWNlYWI2YjE4ZCJ9.kLS_khvfa1s-tfMiwcd2_FQfc0VU5FNYbwol-_C6fVhLMMtcfdfoXyaA6G6puyDtDiAG5GRiMsSgzPWsxfohDg",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI2ZTdmYmEzNjc0MTA3Y2IzOTU3OTY3NjI2YzI0MDdjMzQ0MjQyMDRmNzM4NDQ3Y2ViMzc4YmYwNWZjMDIwMTc1In0.j-aZOuE0E1M1qQ5Gk9eIdhtEMle1LooSibN3c5Tt90DXdHJ8EfsUBW6LG0GTYH7ZAJEIlvkB5FLZnQ86lfhXCw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIwODVkZjYwMmJkZjQ1YTc2NWYxYjQzNThkY2Q0MWMxZjI4MjZmYTA0NmY0NmVjNmQ0N2ZkYmU5MjE5ZDcwMzZhIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.w5_DEQ4v09Niw8zYCKhZRiVZtjyaZkG5Qgrv5gDH5AZ0bAwjPEFemPx3Bmt6T8b_vJdA9ghrOwkx8-_H2qE7Cw"
   },
   "expect": "reject",
   "expect_stage": "verify",
   "expect_reason": "verify_error",
-  "expect_in_grace_period": false
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
 }

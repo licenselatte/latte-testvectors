@@ -3,7 +3,7 @@
   "category": "empty_file",
   "description": "Completely empty token and cert chain.",
   "now": "2026-07-04T12:00:00Z",
-  "master_public_key_hex": "6522f79e8deb393ac0c8f4acea64b843c913182d1b1beeeb6a22b3b5d7d0d210",
+  "master_public_key_hex": "64449da2265acc3d7c92db47636a1ca559e0c62ddd2bb7f23f8ebbd40f94743d",
   "machine_id": "test-machine-001",
   "token": "",
   "chain": {
@@ -14,5 +14,7 @@
   "expect": "reject",
   "expect_stage": "verify",
   "expect_reason": "verify_error",
-  "expect_in_grace_period": false
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
 }

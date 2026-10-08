@@ -199,6 +199,16 @@ every cached token issued before the claim existed. The probe is what lets
 them write "if the token knows about entitlements use them, otherwise keep
 the old behaviour" for one release.
 
+## Machine ID
+
+`machine_id.json` pins the one value every SDK sends as `machine_id`, and the
+server signs into the token as `mid`: lowercase hex
+`HMAC-SHA256(key = raw machine ID, message = "licenselatte_" + app_id)`. The
+raw ID is whatever the caller supplied, used byte for byte as UTF-8, or, when
+the caller supplied none, the platform's machine ID read the way
+`denisbrodbeck/machineid` reads it. A raw ID never leaves the machine. Every
+SDK runs each case through its own hashing function.
+
 ## Regenerating fixtures
 
 ```sh

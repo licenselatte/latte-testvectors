@@ -1,0 +1,20 @@
+{
+  "description": "The machine_id every SDK sends: lowercase hex HMAC-SHA256 with the raw machine ID (as read from the OS, or as the caller supplied it, byte for byte) as the key and \"licenselatte_\" + app_id as the message. This is denisbrodbeck/machineid's ProtectedID, which latte-go uses.",
+  "cases": [
+    {
+      "raw_machine_id": "4c4c4544-0042-3510-8051-b4c04f4b4e32",
+      "app_id": "pk_test_abc123",
+      "expect_machine_id": "8042cf7bdb98b1fc63726ac2b9a8421a0ba35871bfc7833d07b3975ae7492247"
+    },
+    {
+      "raw_machine_id": "b08f1a2c3d4e5f60718293a4b5c6d7e8",
+      "app_id": "pk_live_xyz789",
+      "expect_machine_id": "21125c705c3d1c3f02fbf79d1be2f17f58f7cf88e387e46008b2f76b1d0a422e"
+    },
+    {
+      "raw_machine_id": "  spaces and ünïcode  ",
+      "app_id": "pk_local_k",
+      "expect_machine_id": "77f4bdd1b5efe1fdcde958ac24d91f3e82eb98f29c7d9d3511536a47366fcce7"
+    }
+  ]
+}

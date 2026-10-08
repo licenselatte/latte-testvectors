@@ -289,26 +289,16 @@ func main() {
 			anchor, machineID, "reject", "validate", "hard_expired", false))
 	}
 
-	// --- perpetual_fixed bonus coverage ---
+	// --- a perpetual_fixed token gets no exemption from the grace window ---
 	{
 		cs := buildStandardChain()
 		tok := signActivation(cs, activationOpts{
-			iat: anchor, exp: time.Date(2099, 1, 1, 0, 0, 0, 0, time.UTC),
-			graceSeconds: int64(90 * 24 * time.Hour / time.Second), ltype: "perpetual_fixed", machineID: machineID,
+			iat: anchor.AddDate(0, 0, -40), exp: time.Date(2099, 1, 1, 0, 0, 0, 0, time.UTC),
+			graceSeconds: int64(30 * 24 * time.Hour / time.Second), ltype: "perpetual_fixed", machineID: machineID,
 		})
-		fixtures = append(fixtures, mk(cs, tok, "perpetual_fixed_valid", "valid_license",
-			"perpetual_fixed license: grc must still be > 0 (validate.Validate checks this unconditionally before branching on LicenseType), but once past that precondition, perpetual_fixed skips the grace-deadline check entirely and only enforces hard expiry.",
-			anchor, machineID, "accept", "none", "", false))
-	}
-	{
-		cs := buildStandardChain()
-		tok := signActivation(cs, activationOpts{
-			iat: anchor.AddDate(0, 0, -30), exp: anchor.AddDate(0, 0, -1),
-			graceSeconds: int64(90 * 24 * time.Hour / time.Second), ltype: "perpetual_fixed", machineID: machineID,
-		})
-		fixtures = append(fixtures, mk(cs, tok, "perpetual_fixed_expired", "past_grace_period",
-			"perpetual_fixed license whose exp has already passed; must hard-fail on ExpiresAt even though this type normally skips the grace-deadline check.",
-			anchor, machineID, "reject", "validate", "hard_expired", false))
+		fixtures = append(fixtures, mk(cs, tok, "perpetual_fixed_past_grace_deadline", "past_grace_period",
+			"A token carrying ltype perpetual_fixed is validated like any other: 40 days offline against a 30-day grc must fail on the grace deadline despite a 2099 exp.",
+			anchor, machineID, "reject", "validate", "grace_expired", false))
 	}
 
 	// --- 4. tampered payload (single bit flipped in the signed portion) ---

@@ -1,0 +1,20 @@
+{
+  "name": "perpetual_fixed_past_grace_deadline",
+  "category": "past_grace_period",
+  "description": "A token carrying ltype perpetual_fixed is validated like any other: 40 days offline against a 30-day grc must fail on the grace deadline despite a 2099 exp.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "8c210377d3da376e9bd7a5a7e20cadfedba36febe9b1c889a4be47be456750ea",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjo0MDcwOTA4ODAwLCJncmMiOjI1OTIwMDAsImlhdCI6MTc3OTcxMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwibHR5cGUiOiJwZXJwZXR1YWxfZml4ZWQiLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.g8TKpfVGiFVSu0S4VB2RNKxRm6c13-aJ3R2fwkzhLMb012YheKhVQ5rn4ar-YqEY68hiJSaUQqyUvvLiLYIJCA",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiMWVhNmNkMzljZDBmNWZjYjQ4MmNjNjJiZTRmNzcwNjM5MTRlOTBkMTc3ZDU0ZjM2ZGI0YjQyMGYxN2QwYWI2NCJ9.57gJFx89NJR-bQMorQ6LN5F4Wb6RUy8kA0rBFgwus9OZbZdzxAfFf22_Nv782iym_fM41RvJEvbABMegQQ-8AQ",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI3NzRjMzExNjdiZjg1OWUxMDM1NWJlYTM4ODdmMmExZjYzMDBmZDc0M2U4YzUwZTRkMTljOWY3ODkyYzZhZjY2In0.l3cSttGjsr0-Wa7K4OiKtlplRqc4eSiN_IgieHJbPD2hj7I-QdxmM51G59mhEjPUWl4ACsDQ2iZ640bpqNv3CA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIxYzVjZmY1OGE0N2RjZTM4NWZlNDYwMjBjZmYzMzQ2MjAwNjQ5M2Y2ZWU1MzcwMjQ0NzA2MGIyMmIyYTlhYTc5IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.nye07nkdUIif7OR53l0oswUC06kQK5RaY70v9W0zl4qzbDgImFXeNQaqoiKMOeEvxp5OIpUx9FZQ9KmYjQbKAg"
+  },
+  "expect": "reject",
+  "expect_stage": "validate",
+  "expect_reason": "grace_expired",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

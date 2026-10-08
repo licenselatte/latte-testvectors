@@ -28,18 +28,11 @@
     "name": "expired_hard_expiry"
   },
   {
-    "category": "valid_license",
-    "expect": "accept",
-    "expect_reason": "",
-    "expect_stage": "none",
-    "name": "perpetual_fixed_valid"
-  },
-  {
     "category": "past_grace_period",
     "expect": "reject",
-    "expect_reason": "hard_expired",
+    "expect_reason": "grace_expired",
     "expect_stage": "validate",
-    "name": "perpetual_fixed_expired"
+    "name": "perpetual_fixed_past_grace_deadline"
   },
   {
     "category": "tampered_payload",

@@ -1,0 +1,20 @@
+{
+  "name": "lex_expiring_valid",
+  "category": "lex_format",
+  "description": "lex a month out, exp at iat+7d, issued 10 minutes ago: accepted, not yet in the grace period.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "3d7f8b28463392e8874ede8e6772ab60050121afd04dc82bd3937c614206701d",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzNzcwNjAwLCJpYXQiOjE3ODMxNjU4MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImxleCI6MTc4NTg0NDgwMCwibHR5cGUiOiJleHBpcmluZyIsIm1pZCI6InRlc3QtbWFjaGluZS0wMDEiLCJwaWQiOiJwcm9qXzExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsInN1YiI6IkFIQUs4NVQ2MjhXWjYzOUNNVkhGOFRORERYMjYwWiJ9.CRg8EHGc5YWyx74aqZBUfgspeUcCQtOLafY442fP5AAKyNVq9a-6T8cqO6lCu4os2Rk2tHLwWGR4ii6HnqrRAQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiY2ZjMGU0OTg1NWI1MzFlNzBlNTk3ZTgxZTdhNGJjZWVhZjEyYTY1YzhkNzJhNjM2NmQ0NjExMDJhNGZiZDg2NSJ9.RdkbANmytUCa2anwVCTAGZCSIWerBfyGlDkaH6FTCKpcl4vvIXrUeFHq0xS4Fn2OM3kk2jZQ0hV7ZPcvZJSsDQ",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJjYWEwNjc5OGRjZGY5OTQyZWYxZTc4OWZjNWU0NDZiNTYzNmMzMGU5OTE3OTEwMmI2MmU3NGQyZDJhNzA2MjgwIn0.qNP5AtARQ3DZFdFov8CF7LxenQckvF2gUmH9g2gi06SCVzGCcHeFM22AisCr1tp7AshH6dZO59nrkA76p_DwDw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJmZWM4MDQzY2Q4MjZjNjY1MWM4OGNiMzFjMmFhMjU1YWRjODc3OTk1ODljYjRmZGRjNjhiN2EzNGQwZmE0Zjg4IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.yDy0jtNcgFSo8TyR501_T12Xk7HhXCKxJeyFoyF3T58CWA_hLAKUPYgpZQmLsqeRuzX5onuYbCSKZmyOJLVGCw"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

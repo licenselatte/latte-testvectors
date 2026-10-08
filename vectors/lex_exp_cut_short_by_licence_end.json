@@ -1,0 +1,20 @@
+{
+  "name": "lex_exp_cut_short_by_licence_end",
+  "category": "lex_format",
+  "description": "The licence ends tomorrow, so the server set exp = lex instead of iat+7d: accepted, in the grace period.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "14c5712767e04fdf2283cbc57d4e98cf106fe22ebe7abb6413ee0ea10a516083",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMjUyODAwLCJpYXQiOjE3ODI5OTM2MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImxleCI6MTc4MzI1MjgwMCwibHR5cGUiOiJleHBpcmluZyIsIm1pZCI6InRlc3QtbWFjaGluZS0wMDEiLCJwaWQiOiJwcm9qXzExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsInN1YiI6IkFIQUs4NVQ2MjhXWjYzOUNNVkhGOFRORERYMjYwWiJ9.aMUWxfZEKapslq5zcnIIqduM8g0l1WGChBlO2RkoapPvOu7m_wmEm25OD6lg5l6YRPHKsaJ7KzHG0YfMozSoDQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZTQ1MmFjODcyZjMzYjM5NmRkZjYwNzVjNWU1NmFjNGI0YTMwYWUxMGY4MDRjZDQ5NzZjMGUwNjdlNTdmZDY2MiJ9.CAPFQYag_igUaklvo59t6-tEzGzHboAy6PDCPjCBABb8fMfxIOzgpEsLuOFx_14-2KkYiG1His9_x2NBjVOQBw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJiNzgyMjViMTk3MTBjMjA0M2ZhZjQxYmY5YWQwYjBiMzAwMGJjMWE5NmY4NDcyNTI4NjA3YzU5N2NhYzcwZTk1In0.MtbGzkSd6HxIRfY_YHb5tKq-xzUQdpDIBR9zaGvR6EVNEKHk8RRUVk0ay_n1WBZkATyPtnNwF9Sd1HNPjBLjDA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI4MzljZTc2OTRkNzZlMDlkMmYyNmI5ZDk3NmEyZWQ4M2FjMmM4YTlkYWNiYWIxNzE5M2QyN2MzNzFiZjc3NDY1IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.VaNbRecqXjkGlmx9JyyUsDZJGZRWwSVlTSxB8x75JalDkAuHWlwCA6ffWAg4tbQCM7IrlaEIWg1DWMV4SkUdBQ"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": true,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

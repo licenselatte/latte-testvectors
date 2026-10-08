@@ -1,0 +1,20 @@
+{
+  "name": "lex_perpetual_valid",
+  "category": "lex_format",
+  "description": "No lex (perpetual), issued 2 days ago with exp at iat+7d: accepted, and in the grace period.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "8283eca05df35f74884cc6e9035efb6bcc4d93d1d29ee1fc9e7d697a85c9f289",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzNTk4NDAwLCJpYXQiOjE3ODI5OTM2MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoicGVycGV0dWFsIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.vk2iQiCFlfgGIjwD0qpi2fgeuXzz1nhvpz0Eckz2s11NuJANUF0HbWANI13iJhoDFo6lv7TEmIsRRe12vmtIBQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjVkNGM5OTBiNDIwNjgwNGU1ZGI3NjZmMDRjMjdhNzU2NTNhMTI4NzkzOWVhZmIyNGFkZGU2MGRkYTYwODgzMyJ9.9vM7GigMQ-Mxd_cU34FUAIhH6gDYqs7_h4JUSf4airHiF5kuV4d5h0ms9_xy4MuffJL7Nuw4BJCYNiqBG4vhBA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJjNmNiNjY1M2JlYWM0NTY3MGNhZGE3NGZjNTRiOTU5ODk5ZWRkMGQzNjU3Y2U4OWQ5YmI2Y2RhMjIzNjk0YWNjIn0.ofWAvG1J9YffVzOFFoNz848Gj8nUGVU_MQHR5hvp017oYlvshYiaGB-7W8MF6P-kAUuTGJeomnWudtt8-CVABw",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIxMWVmOTVhN2YyOGJiYjlkN2Q0MjY1OThmZDY2ZmYyYzY1MGVmYmI5MzVhYWQ5MGIyZDBmNjFlMzA5MmY1NjdlIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.sEunoxoUmbfaOuLwIorookmB96X98znWofJPSOiErN0OP2vfUy7yR4n2mrUTCvhRjo49frMpQmjdhGHRM-q_AQ"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": true,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

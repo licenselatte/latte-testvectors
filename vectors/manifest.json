@@ -168,6 +168,69 @@
     "name": "grace_boundary_one_second_after"
   },
   {
+    "category": "lex_format",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "lex_perpetual_valid"
+  },
+  {
+    "category": "lex_format",
+    "expect": "reject",
+    "expect_reason": "grace_expired",
+    "expect_stage": "validate",
+    "name": "lex_perpetual_offline_too_long"
+  },
+  {
+    "category": "lex_format",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "lex_expiring_valid"
+  },
+  {
+    "category": "lex_format",
+    "expect": "reject",
+    "expect_reason": "grace_expired",
+    "expect_stage": "validate",
+    "name": "lex_offline_past_exp_licence_running"
+  },
+  {
+    "category": "lex_format",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "lex_exp_cut_short_by_licence_end"
+  },
+  {
+    "category": "lex_format",
+    "expect": "reject",
+    "expect_reason": "hard_expired",
+    "expect_stage": "validate",
+    "name": "lex_licence_ended"
+  },
+  {
+    "category": "lex_format",
+    "expect": "reject",
+    "expect_reason": "hard_expired",
+    "expect_stage": "validate",
+    "name": "lex_passed_before_exp"
+  },
+  {
+    "category": "lex_format",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "lex_exp_boundary_exact"
+  },
+  {
+    "category": "lex_format",
+    "expect": "reject",
+    "expect_reason": "grace_expired",
+    "expect_stage": "validate",
+    "name": "lex_exp_boundary_one_second_after"
+  },
+  {
     "category": "entitlements",
     "expect": "accept",
     "expect_reason": "",

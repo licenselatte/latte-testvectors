@@ -1,0 +1,20 @@
+{
+  "name": "lex_exp_boundary_exact",
+  "category": "lex_format",
+  "description": "now == exp: still accepted; at the deadline sinceActivation is not \u003c GracePeriod, so not in the grace period.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "2ee236fdcee499b11509b24258dbe167c4d87ff58f503fea1ee51e14aa44abc0",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMTY2NDAwLCJpYXQiOjE3ODI1NjE2MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoicGVycGV0dWFsIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.o97Pzs9MN3xyAkMr5JsiCDOU7Z5K2vJnEFrSGFMsRX6oyrG-SU3G9c1Ny_ivINLvC0BZirmJTbgIGk8VzNNdCA",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjIzMjU2NjIwMDhhYTVlNjVlMWYyNzFlNmU0NWIxMGQ5MzBiYTI2MzM1NzhjYTc5ZWQ2ZDk5OWYyNDgxNzY4NSJ9.dfNZg0yef_q0HeYS3rj1uYqFHlwXLYxqVeUOeMq8bsyn88DttyZUJWIB4LiRhTYqnrw_49Sx1sWVbXsFno2UCA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI3ODg4M2U5Y2M3OTQ2OGFmOTZjYWUzMTU1OGZiMjEwMzgxNmRmZDE0ZTdlMTM2NzIyMTgyOTRmZDAwMTEwMjk3In0.n_EwmyudY0ELtRUcZ_5JuTBkok_6rZIolyiQKDlA4oxRgH__O6E7JhXP_bYd5Z0AMH9KSbD2e-t1mID3C-lZDg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJlZTg4ZGM2NjZhMGZhNDgxOTI5MjU4ZjQ5YTg4N2JlMTcwNDMzYjFhZDc4N2ZkZjdjYzk3MWExNGEzNmI1OWFkIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.oE-A1m2SzZeK76yYckMd5UltuMKFPswSWCBuih1zU05p5_62MjmBPVBJccA2Ttj8i1y7kFUrnVGY5xxOmrQYDQ"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

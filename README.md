@@ -107,6 +107,26 @@ cross-check: the activation JWT's `iat` must fall inside the daily cert's
 `[iat, exp]`. `offline_after_daily_cert_expiry` pins the first half and
 `activation_iat_after_daily_cert_exp` the second.
 
+## Two token formats
+
+A token that carries `grc` is the original format: `exp` is the licence's
+end (2099 for a perpetual licence) and the offline deadline is
+`iat + grc`.
+
+A token without `grc` is the `lex` format the server signs from the root
+switch on. `exp` is the offline deadline itself, already capped at the
+licence's end, and `lex` carries that end date when the licence has one
+(absent for a perpetual licence). Read it as:
+
+- `ExpiresAt` is `lex`, or no expiry when `lex` is absent.
+- `GracePeriod` is `exp - iat`.
+- Reject with `hard_expired` when `now > lex`, even if `exp` is later.
+- Otherwise reject with `grace_expired` when `now > exp`.
+
+`exp` is checked here, at the `validate` stage, never by the JWT library
+at `verify`. SDKs accept both formats until every token in the field
+carries `lex`. The `lex_format` category pins the second.
+
 ## `expect_reason` taxonomy
 
 latte-go itself only distinguishes failure *reasons* at the `validate`

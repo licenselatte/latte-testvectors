@@ -119,18 +119,18 @@ func buildChain(dailyIat, dailyExp time.Time) chainSet {
 }
 
 const (
-	projectID  = "proj_11111111-1111-1111-1111-111111111111"
-	licenseKey = "AHAK85T628WZ639CMVHF8TNDDX260Z"
+	projectID    = "proj_11111111-1111-1111-1111-111111111111"
+	licenseKey   = "AHAK85T628WZ639CMVHF8TNDDX260Z"
 	activationID = "act_22222222-2222-2222-2222-222222222222"
-	machineID  = "test-machine-001"
+	machineID    = "test-machine-001"
 )
 
 type activationOpts struct {
-	iat, exp time.Time
+	iat, exp     time.Time
 	graceSeconds int64
-	ltype string
-	machineID string
-	metadata map[string]string
+	ltype        string
+	machineID    string
+	metadata     map[string]string
 
 	// entitlements becomes the `ent` claim (docs/typed-entitlements.md §2.1).
 	// It is typed map[string]any rather than a typed value struct precisely
@@ -141,6 +141,12 @@ type activationOpts struct {
 	// absent claim and `"ent": {}` deny identically, so only the presence
 	// probe can tell them apart -- which is the distinction it exists for.
 	hasEntitlements bool
+
+	// lexFormat signs the token the way the server does from the root
+	// switch on: no `grc`, `exp` is the offline deadline itself, and `lex`
+	// carries the licence's own end date when it has one (zero lex = absent).
+	lexFormat bool
+	lex       time.Time
 }
 
 func signActivation(cs chainSet, o activationOpts) string {
@@ -153,7 +159,13 @@ func signActivation(cs chainSet, o activationOpts) string {
 		"ltype": o.ltype,
 		"iat":   unixT(o.iat),
 		"exp":   unixT(o.exp),
-		"grc":   o.graceSeconds,
+	}
+	if o.lexFormat {
+		if !o.lex.IsZero() {
+			claims["lex"] = unixT(o.lex)
+		}
+	} else {
+		claims["grc"] = o.graceSeconds
 	}
 	if o.metadata != nil {
 		claims["pmd"] = o.metadata
@@ -188,10 +200,10 @@ type fixture struct {
 
 	// Expect describes the required outcome. See ../README.md for the
 	// full taxonomy every SDK's fixture runner must implement.
-	Expect           string `json:"expect"`            // "accept" | "reject"
-	ExpectStage      string `json:"expect_stage"`      // "none" | "verify" | "validate"
-	ExpectReason     string `json:"expect_reason"`     // see README taxonomy; "" when ExpectStage == "verify" or "none" and accepted
-	ExpectInGrace    bool   `json:"expect_in_grace_period"`
+	Expect        string `json:"expect"`        // "accept" | "reject"
+	ExpectStage   string `json:"expect_stage"`  // "none" | "verify" | "validate"
+	ExpectReason  string `json:"expect_reason"` // see README taxonomy; "" when ExpectStage == "verify" or "none" and accepted
+	ExpectInGrace bool   `json:"expect_in_grace_period"`
 
 	// ExpectHasEntitlements is the presence probe: true iff the token
 	// carried an `ent` claim at all, empty object included. It is not
@@ -548,6 +560,71 @@ func main() {
 		fixtures = append(fixtures, mkBoundary("grace_boundary_one_second_after", iat.Add(7*24*time.Hour).Add(time.Second), "reject", "grace_expired", false))
 	}
 
+	// --- lex format: exp is the offline deadline, lex the licence's end ---
+	//
+	// A token without `grc` is read this way: reject past `exp`, reporting
+	// hard_expired when `lex` has also passed and grace_expired otherwise;
+	// reject past `lex` even if `exp` is later; GracePeriod is exp - iat.
+	{
+		lexCase := func(name, description string, iat, exp, lex, now time.Time, expect, reason string, inGrace bool) fixture {
+			ltype := "perpetual"
+			if !lex.IsZero() {
+				ltype = "expiring"
+			}
+			cs := buildStandardChain()
+			tok := signActivation(cs, activationOpts{
+				iat: iat, exp: exp, lex: lex, lexFormat: true,
+				ltype: ltype, machineID: machineID,
+			})
+			return mk(cs, tok, name, "lex_format", description, now, machineID, expect, mapStage(expect), reason, inGrace)
+		}
+		week := 7 * 24 * time.Hour
+		var none time.Time
+
+		iat := anchor.Add(-2 * 24 * time.Hour)
+		fixtures = append(fixtures, lexCase("lex_perpetual_valid",
+			"No lex (perpetual), issued 2 days ago with exp at iat+7d: accepted, and in the grace period.",
+			iat, iat.Add(week), none, anchor, "accept", "", true))
+
+		iat = anchor.Add(-8 * 24 * time.Hour)
+		fixtures = append(fixtures, lexCase("lex_perpetual_offline_too_long",
+			"No lex (perpetual), exp at iat+7d passed a day ago: rejected as grace_expired.",
+			iat, iat.Add(week), none, anchor, "reject", "grace_expired", false))
+
+		iat = anchor.Add(-10 * time.Minute)
+		fixtures = append(fixtures, lexCase("lex_expiring_valid",
+			"lex a month out, exp at iat+7d, issued 10 minutes ago: accepted, not yet in the grace period.",
+			iat, iat.Add(week), anchor.AddDate(0, 1, 0), anchor, "accept", "", false))
+
+		iat = anchor.Add(-8 * 24 * time.Hour)
+		fixtures = append(fixtures, lexCase("lex_offline_past_exp_licence_running",
+			"lex a month out but exp (iat+7d) passed a day ago: rejected as grace_expired, not hard_expired.",
+			iat, iat.Add(week), anchor.AddDate(0, 1, 0), anchor, "reject", "grace_expired", false))
+
+		iat = anchor.Add(-2 * 24 * time.Hour)
+		fixtures = append(fixtures, lexCase("lex_exp_cut_short_by_licence_end",
+			"The licence ends tomorrow, so the server set exp = lex instead of iat+7d: accepted, in the grace period.",
+			iat, anchor.Add(24*time.Hour), anchor.Add(24*time.Hour), anchor, "accept", "", true))
+
+		iat = anchor.Add(-10 * 24 * time.Hour)
+		fixtures = append(fixtures, lexCase("lex_licence_ended",
+			"exp = lex, both a day ago: rejected as hard_expired.",
+			iat, anchor.Add(-24*time.Hour), anchor.Add(-24*time.Hour), anchor, "reject", "hard_expired", false))
+
+		iat = anchor.Add(-2 * 24 * time.Hour)
+		fixtures = append(fixtures, lexCase("lex_passed_before_exp",
+			"lex passed an hour ago but exp is days out: lex is a hard limit on its own, rejected as hard_expired.",
+			iat, iat.Add(week), anchor.Add(-time.Hour), anchor, "reject", "hard_expired", false))
+
+		iat = anchor.Add(-7 * 24 * time.Hour)
+		fixtures = append(fixtures, lexCase("lex_exp_boundary_exact",
+			"now == exp: still accepted; at the deadline sinceActivation is not < GracePeriod, so not in the grace period.",
+			iat, anchor, none, anchor, "accept", "", false))
+		fixtures = append(fixtures, lexCase("lex_exp_boundary_one_second_after",
+			"now == exp + 1s: rejected as grace_expired.",
+			iat, anchor.Add(-time.Second), none, anchor, "reject", "grace_expired", false))
+	}
+
 	// --- entitlements (docs/typed-entitlements.md §4.4) ---
 	//
 	// Six fixtures pinning the whole SDK contract, because the interesting
@@ -633,13 +710,13 @@ func main() {
 			ltype: "expiring", machineID: machineID,
 			hasEntitlements: true,
 			entitlements: map[string]any{
-				"export_pdf":    true,
-				"max_projects":  25,
-				"tier":          "pro",
-				"ratio":         1.5,
-				"nested":        map[string]any{"a": true},
-				"listy":         []any{1, 2},
-				"nulled":        nil,
+				"export_pdf":   true,
+				"max_projects": 25,
+				"tier":         "pro",
+				"ratio":        1.5,
+				"nested":       map[string]any{"a": true},
+				"listy":        []any{1, 2},
+				"nulled":       nil,
 			},
 		})
 		fixtures = append(fixtures, mk(cs, tok, "entitlements_malformed_value_dropped", "entitlements",
@@ -736,7 +813,7 @@ func mk(cs chainSet, token, name, category, description string, now time.Time, m
 		MachineID:          mid,
 		Token:              token,
 		Expect:             expect, ExpectStage: stage, ExpectReason: reason,
-		ExpectInGrace: inGrace,
+		ExpectInGrace:         inGrace,
 		ExpectHasEntitlements: false,
 		ExpectEntitlements:    map[string]any{},
 	}

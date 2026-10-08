@@ -1,0 +1,20 @@
+{
+  "name": "lex_offline_past_exp_licence_running",
+  "category": "lex_format",
+  "description": "lex a month out but exp (iat+7d) passed a day ago: rejected as grace_expired, not hard_expired.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "910f19672aedbf294713e959e5b2a4cdc5e360f12de79290f6859aae5432a165",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMDgwMDAwLCJpYXQiOjE3ODI0NzUyMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImxleCI6MTc4NTg0NDgwMCwibHR5cGUiOiJleHBpcmluZyIsIm1pZCI6InRlc3QtbWFjaGluZS0wMDEiLCJwaWQiOiJwcm9qXzExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsInN1YiI6IkFIQUs4NVQ2MjhXWjYzOUNNVkhGOFRORERYMjYwWiJ9.VubN21J4AkDfKk2bDxnSPYVnxGNWrcuHq2g36eouN61lnYUwssBxOYATBggyH-PCc2Gr81TqSBWKANqVKHNRDw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiYzYxNGE5ZDBhZWU0ZjJhZmRhMTMyMzhjNmExZjljMTNjZjc3OWU2MDYwZjBlZGM4MzUzOTk1NDJjOGMxMThiNSJ9.zzMzy5Nm1lYcTL4_N8FLGyH3CN0317lBH9MSJwemHxoBh0ycFZxWYL403eHtcU0Q53RoN2qQwLQD1i-b2AzGAA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJmZGI1ZWQ0YzA3MmVjNWUwNmEyNDRlNDQ3ZWRkODI0M2YyZjU4NTMyZTI4YWQ3NWRlNTBkMmU3MmY1NDQ2MmMzIn0.D81jtp6CeU-P2WxJ_oVucv3uIRUmNz2BTgDqEZgxIBgmx4F8b0qCPynDx5qZpma80nEHAtmH10JC4ZQrC9WtDA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIwYjMzNGViM2FjYmUyNWNmNDZjYThmNDQ1N2FiNzNjZDZkNzU5N2FhMWE0MGY0ZWQ1NWQ0Y2YxY2ZmMDRiMTliIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.VDJF1RqIBhIa_uxj3BErX_1zbtVNimlQa7T1XbjePnr54jJL9e2gmPmIwBPFrDf5Y-vAOk0JJlwqn7laFNwICg"
+  },
+  "expect": "reject",
+  "expect_stage": "validate",
+  "expect_reason": "grace_expired",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

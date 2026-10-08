@@ -1,0 +1,20 @@
+{
+  "name": "activation_iat_after_daily_cert_exp",
+  "category": "broken_cert_chain",
+  "description": "Activation JWT's iat is after its daily cert's exp, so the daily key signed a token dated outside its own day. Must hard-fail chain verification even though the verifier's clock is within the token's validity.",
+  "now": "2026-07-05T01:10:00Z",
+  "master_public_key_hex": "34e4a6ddf096eab645e14d6490fcefe1f7295b089aa3ad4ebfd0a7263af3f3a6",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzk5MTA3ODAwLCJncmMiOjI1OTIwMDAsImlhdCI6MTc4MzIxMDIwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwibHR5cGUiOiJleHBpcmluZyIsIm1pZCI6InRlc3QtbWFjaGluZS0wMDEiLCJwaWQiOiJwcm9qXzExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsInN1YiI6IkFIQUs4NVQ2MjhXWjYzOUNNVkhGOFRORERYMjYwWiJ9.9umGb-NxbtjSN-041-rIbxNQ7aAbxc-Cc4GjUwR0LrIEvwWruW4MsTNjtZ8t-EEp2jzEFPWG5KwF0Spyc5EFBQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiYmNjMTYwMjFlOThiOGIzNTdmY2IzMDcwYWZjNDZhMTFhMzNhMjRiOWVjZDI3ODNjMTU1NWY3ODQ1MmRlOGJlYiJ9.x6K5bBGji8HWi1ET2v_usn6qR7jlytM6CRkLFzN92HA7ewz--h3Z6z6yoZ9G2vAaZSI751zthOC9El_b--OeAA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIyNDZjMjdjMmUwYzVlNDhhMjU1Yzk0NDk4YTYxMzVlNTk0ZTdkOTk5ZTJjMmJmYWQzOWI4YmVhMmNlMWI5M2E0In0.idcsIowokYVBOZiMesHl8uNSYmRPc1Jie3hQ4xDjwF2rEZgjG8bVJG9XfN2k0F3i6C1oeuleYW6nVuvzQZz2BQ",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIyNzIxMmZhOWI3OGMwMjFiMjY4NmZhNTFiZjg3MTQ3NWUxNmJjMjNhMWJlMGI3Mzc0MTU5MzcxMmY2YTMzOWEyIiwiZXhwIjoxNzgzMjA5OTAwLCJpYXQiOjE3ODMxMjMyMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.HWX2UVEl_0Xxyjbw04L4TBiGv7PaEfM5FPHJRJHYsWH1VgqTd-M2FhEZaGCZFzjHK0FnzZqJPwnrC0Ai5NCXCw"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "verify_error",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

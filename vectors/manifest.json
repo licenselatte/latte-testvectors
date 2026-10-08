@@ -100,9 +100,23 @@
   {
     "category": "clock_skew",
     "expect": "reject",
+    "expect_reason": "hard_expired",
+    "expect_stage": "validate",
+    "name": "clock_skew_after_cert_validity"
+  },
+  {
+    "category": "clock_skew",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "offline_after_daily_cert_expiry"
+  },
+  {
+    "category": "broken_cert_chain",
+    "expect": "reject",
     "expect_reason": "verify_error",
     "expect_stage": "verify",
-    "name": "clock_skew_after_cert_validity"
+    "name": "activation_iat_after_daily_cert_exp"
   },
   {
     "category": "clock_skew",

@@ -97,6 +97,16 @@ for each vectors/*.json (skip manifest.json):
     assert license.limit("no_such_key") is missing
 ```
 
+## The daily cert's `exp`
+
+Every cert's `iat` is checked against `now` with zero leeway, and so is the
+submaster's and project's `exp`. The daily cert's `exp` is **not**: it ends
+at 00:05 UTC the day after issue, and a cached token has to keep verifying
+offline for its whole grace period. What bounds the daily cert instead is a
+cross-check: the activation JWT's `iat` must fall inside the daily cert's
+`[iat, exp]`. `offline_after_daily_cert_expiry` pins the first half and
+`activation_iat_after_daily_cert_exp` the second.
+
 ## `expect_reason` taxonomy
 
 latte-go itself only distinguishes failure *reasons* at the `validate`

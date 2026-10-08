@@ -1,19 +1,19 @@
 {
   "name": "clock_skew_after_cert_validity",
   "category": "clock_skew",
-  "description": "Verifying machine's clock is set after the daily cert's own exp; must hard-fail chain verification with zero leeway.",
+  "description": "Verifying machine's clock is set after the daily cert's own exp. The daily cert's exp is not checked against the clock (a cached token must outlive the day it was issued), so the chain verifies; the token's own exp has passed, so validate rejects it as hard-expired.",
   "now": "2026-07-06T12:00:00Z",
-  "master_public_key_hex": "a3a4a5972726b6764ff46e20b47baca88d05af80bcf02c021740fa934396c6e2",
+  "master_public_key_hex": "8a21bf9760f6ee9c927cccd00cb44faadb26cbfc11e3e0fd2f6a0b7cbb87372b",
   "machine_id": "test-machine-001",
-  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMjA5NjAwLCJncmMiOjIxNjAwLCJpYXQiOjE3ODMxNjY0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoiZXhwaXJpbmciLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.ziesWptVqPV2yi2UHG8mkNCbE1aLWwckBpRdpsrkMwp6tRbkQ4E_Fh9rUoqEI2UZP0XW5i8rrgYZe-U2SO8HAw",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzgzMjA5NjAwLCJncmMiOjIxNjAwLCJpYXQiOjE3ODMxNjY0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoiZXhwaXJpbmciLCJtaWQiOiJ0ZXN0LW1hY2hpbmUtMDAxIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJzdWIiOiJBSEFLODVUNjI4V1o2MzlDTVZIRjhUTkREWDI2MFoifQ.nBT3Np7WwmKj5-MxRZHmndPqhNAHy1mZ3U5nxIwVWZxRvlIze29hOj6O_5rkAWNGRUILdMd266orZ9bvF166Dw",
   "chain": {
-    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiYTEzMzcyYzZiOWE3MjAzMzEyYzQ4MjQ4ZDIyN2ViMGQ5MTRkMDI1MmJlYWI4YzU1Zjg4OThkY2Y4ZTI1NTQ5MSJ9.5NJI0qsszq11_EuSPFBE37xYpUn7-NtBV6s0caK3CxnI4i8FOFAOd4e2Bjlp5_rl5P-YyzQYcj445MknDlImAQ",
-    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJjYTI0ZTVmMGJmYTYzMzdiZTUwZDJjNWI5YmE5Y2EwZWIzYjcyMTUwODljMGFmMzU5YWQ1MzBkYzU1Mzk0OGVkIn0.fo0aLh7H06wgw-t3-1S3H1Zhx06y5yGngcXxyWnSppkJ88FVPued9qmwxMbukqpeclzO0VbBqGknyuhpcl4EAg",
-    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI0YjRhNDMxYjY1YjQyOWNhODM4YTA1NjczY2E1OGIxNmVhMzhiMGM3NTNjMjNjMGU0NzE1ZjNjNGZmOTFmYzNkIiwiZXhwIjoxNzgzMjUyODAwLCJpYXQiOjE3ODMwODAwMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.KFkOT8k9UFSH-buQZ6A6_P6GT3oFZEqnK6RqgHOHXw7ymBLLX-cDNlS9bYQ8Zp05MIz3ZyCQrequLr6mmBhaBA"
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZTk5MTNhNDNlZDExNWIwZmRkNTY1ZmVkNWViODUzM2Q4ZTkxMjM2MjE5M2JkYWViZjQ3MmYwMDQwZWNjYTE2NyJ9.W83JCOljelfKywP04H0Ku_-lNcJLVBaWvja69Wj85v-xZlpw83Cl4wKGF66yziRNxsG0bRnIaKXNwt0ImvLUDw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJmZjVkNTJmODY0NTFhNGM1ZTBkNjJjYThjNWI5NGVmM2MxNjA1OTVmODJjN2IzZDBlZmM1NjNhNTJmOTEyYTQzIn0.d-OkbJH-jv-mz54TS6yL2Oi6NmWPdKEhwWSBmbkXvCI7FKphqwSycfz29n2Z18LCEYlbl3g0ga2N8RlAwtVmBg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJmMWY4YmVkN2Q4ZWMwYzI0NTdkNTM0YWYxZDAwNmU0OWNkNzM4MzczMDA1NDIyODRhZDU2YjBlMjEwZWE5YjEzIiwiZXhwIjoxNzgzMjUyODAwLCJpYXQiOjE3ODMwODAwMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.uMvVOLrdW080CBIsm0XLnWMtJMww6vSUL6TKsO4sYmcPHDqvtpT16eKM_rw_W7SxS6Tz6MzjO9rziK7JTOo2AA"
   },
   "expect": "reject",
-  "expect_stage": "verify",
-  "expect_reason": "verify_error",
+  "expect_stage": "validate",
+  "expect_reason": "hard_expired",
   "expect_in_grace_period": false,
   "expect_has_entitlements": false,
   "expect_entitlements": {}

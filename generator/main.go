@@ -68,41 +68,25 @@ type chainSet struct {
 }
 
 func buildStandardChain() chainSet {
-	master := newKeyPair()
-	submaster := newKeyPair()
-	project := newKeyPair()
-	daily := newKeyPair()
-
-	submasterCert := sign(master.priv, jwt.MapClaims{
-		"iss": issuer,
-		"iat": unixT(anchor.AddDate(-1, 0, 0)),
-		"exp": unixT(anchor.AddDate(1, 0, 0)),
-		"spk": hexPub(submaster),
-	})
-	projectCert := sign(submaster.priv, jwt.MapClaims{
-		"iss": issuer,
-		"iat": unixT(anchor.AddDate(0, -6, 0)),
-		"exp": unixT(anchor.AddDate(0, 6, 0)),
-		"ppk": hexPub(project),
-		"pid": projectID,
-	})
-	dailyCert := sign(project.priv, jwt.MapClaims{
-		"iss": issuer,
-		"iat": unixT(anchor.AddDate(0, 0, -60)),
-		"exp": unixT(anchor.AddDate(0, 0, 60)),
-		"dpk": hexPub(daily),
-	})
-
-	return chainSet{
-		master: master, submaster: submaster, project: project, daily: daily,
-		submasterCert: submasterCert, projectCert: projectCert, dailyCert: dailyCert,
-	}
+	return buildChain(anchor.AddDate(0, 0, -60), anchor.AddDate(0, 0, 60))
 }
 
 // buildNarrowChain mints a daily cert with a tight +/-1 day validity window,
 // used by the clock-skew fixtures where we need the verifier's "now" to
 // fall outside the daily cert's own iat/exp on purpose.
 func buildNarrowChain() chainSet {
+	return buildChain(anchor.AddDate(0, 0, -1), anchor.AddDate(0, 0, 1))
+}
+
+// buildDayChain mints the daily cert the server issues for the UTC day
+// starting at dayStart: valid from 00:00 to 00:05 the next day.
+func buildDayChain(dayStart time.Time) chainSet {
+	return buildChain(dayStart, dayStart.AddDate(0, 0, 1).Add(5*time.Minute))
+}
+
+// buildChain mints a full chain whose daily cert is valid from dailyIat to
+// dailyExp; the submaster and project certs comfortably cover anchor.
+func buildChain(dailyIat, dailyExp time.Time) chainSet {
 	master := newKeyPair()
 	submaster := newKeyPair()
 	project := newKeyPair()
@@ -123,8 +107,8 @@ func buildNarrowChain() chainSet {
 	})
 	dailyCert := sign(project.priv, jwt.MapClaims{
 		"iss": issuer,
-		"iat": unixT(anchor.AddDate(0, 0, -1)),
-		"exp": unixT(anchor.AddDate(0, 0, 1)),
+		"iat": unixT(dailyIat),
+		"exp": unixT(dailyExp),
 		"dpk": hexPub(daily),
 	})
 
@@ -439,7 +423,9 @@ func main() {
 			now, machineID, "reject", "verify", "verify_error", false))
 	}
 	{
-		// Verifier's clock is ahead of the daily cert's own exp.
+		// Verifier's clock is ahead of the daily cert's own exp. The daily
+		// cert's exp is not held against the clock, so the chain verifies;
+		// the token's own exp has passed, so validate rejects it.
 		cs := buildNarrowChain()
 		tok := signActivation(cs, activationOpts{
 			iat: anchor, exp: anchor.Add(12 * time.Hour), graceSeconds: int64(6 * time.Hour / time.Second),
@@ -447,8 +433,40 @@ func main() {
 		})
 		now := anchor.AddDate(0, 0, 2) // after daily cert's exp (anchor+1d)
 		fixtures = append(fixtures, mk(cs, tok, "clock_skew_after_cert_validity", "clock_skew",
-			"Verifying machine's clock is set after the daily cert's own exp; must hard-fail chain verification with zero leeway.",
-			now, machineID, "reject", "verify", "verify_error", false))
+			"Verifying machine's clock is set after the daily cert's own exp. The daily cert's exp is not checked against the clock (a cached token must outlive the day it was issued), so the chain verifies; the token's own exp has passed, so validate rejects it as hard-expired.",
+			now, machineID, "reject", "validate", "hard_expired", false))
+	}
+	{
+		// Activated at 23:59 UTC with the server's real daily window
+		// (00:00 to 00:05 next day), verified five days later while still
+		// offline. The daily cert expired days ago; the grace period, not
+		// the daily cert, decides how long the token works offline.
+		dayStart := time.Date(anchor.Year(), anchor.Month(), anchor.Day(), 0, 0, 0, 0, time.UTC)
+		cs := buildDayChain(dayStart)
+		iat := dayStart.Add(23*time.Hour + 59*time.Minute)
+		tok := signActivation(cs, activationOpts{
+			iat: iat, exp: iat.AddDate(0, 6, 0), graceSeconds: int64(30 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+		})
+		now := iat.AddDate(0, 0, 5)
+		fixtures = append(fixtures, mk(cs, tok, "offline_after_daily_cert_expiry", "clock_skew",
+			"Activated at 23:59 UTC under the server's daily window (00:00 to 00:05 next day), verified five days later inside a 30-day grace period. The daily cert's exp is not checked against the clock, so this must ACCEPT, in grace.",
+			now, machineID, "accept", "none", "", true))
+	}
+	{
+		// The daily key signed a token dated after its own cert's exp. The
+		// clock is inside the token's validity, so only the iat-within-
+		// daily-window cross-check can reject it.
+		dayStart := time.Date(anchor.Year(), anchor.Month(), anchor.Day(), 0, 0, 0, 0, time.UTC)
+		cs := buildDayChain(dayStart)
+		iat := dayStart.AddDate(0, 0, 1).Add(10 * time.Minute) // after the daily exp at 00:05
+		tok := signActivation(cs, activationOpts{
+			iat: iat, exp: iat.AddDate(0, 6, 0), graceSeconds: int64(30 * 24 * time.Hour / time.Second),
+			ltype: "expiring", machineID: machineID,
+		})
+		fixtures = append(fixtures, mk(cs, tok, "activation_iat_after_daily_cert_exp", "broken_cert_chain",
+			"Activation JWT's iat is after its daily cert's exp, so the daily key signed a token dated outside its own day. Must hard-fail chain verification even though the verifier's clock is within the token's validity.",
+			iat.Add(time.Hour), machineID, "reject", "verify", "verify_error", false))
 	}
 	{
 		// Activation token's own iat is slightly in the future relative to

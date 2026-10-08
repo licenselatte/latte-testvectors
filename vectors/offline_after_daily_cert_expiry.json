@@ -1,0 +1,20 @@
+{
+  "name": "offline_after_daily_cert_expiry",
+  "category": "clock_skew",
+  "description": "Activated at 23:59 UTC under the server's daily window (00:00 to 00:05 next day), verified five days later inside a 30-day grace period. The daily cert's exp is not checked against the clock, so this must ACCEPT, in grace.",
+  "now": "2026-07-09T23:59:00Z",
+  "master_public_key_hex": "6d7038dd772631de897af9eea260bcc61729795df0c631b99663fee11742879a",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzk5MTA3MTQwLCJncmMiOjI1OTIwMDAsImlhdCI6MTc4MzIwOTU0MCwiaXNzIjoibGljZW5zZWxhdHRlIiwibHR5cGUiOiJleHBpcmluZyIsIm1pZCI6InRlc3QtbWFjaGluZS0wMDEiLCJwaWQiOiJwcm9qXzExMTExMTExLTExMTEtMTExMS0xMTExLTExMTExMTExMTExMSIsInN1YiI6IkFIQUs4NVQ2MjhXWjYzOUNNVkhGOFRORERYMjYwWiJ9.ydAWGKFz9e6c6ebA9ZwBhH-JioGUMxYGorgfg0sivIgAGR5AlwZPknQDUqmTCEcqR4JRrMRVWNnd2kW9ZANCCw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZjBhZmY0ZTUyMTFhYzcwMDMyMDRmYWVmMGZlNmYwMGZkN2E3MTFjZGU5YWJlZjcxNDA4YTc4OThiMTUwNGJiOCJ9.hixc1DWBNDd7wt-913SEJI3kgP3UbXQJoVU28WdwR3xZCgaei4okN4D2QFLrSoVItaQFBQ_eAyddVc-awhYlDw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJmZmFkZDczMDRmZDRjNjQ2MDM2MGU0MjcwMGI0ODllZjM3MDg3NWU4NmY2MWY1YjY2YTE3ZTQ4MDJhOThkMjU4In0.SjQ8ijZcMaND9ry_4TPPuqFRKqnWyfMIvKjPAgqVzpV4CzPDo8AA7iwN_I6tN6INc-SAzbrvMddWaTye21q8Cg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJkNGE3NTAzNmI3YmU2NzdlYTg2NDljZDBiNTE3MGQ1ZDJkYjJiOTcxYjkwMmNmNjY3MzhlMmEwNzFlN2NjY2Y4IiwiZXhwIjoxNzgzMjA5OTAwLCJpYXQiOjE3ODMxMjMyMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.Y96gFwf9kUnGgWeg_I_ruxmU8Vvnt1mAezkSpqdoX6c2XlSkw4CRpindb9EWcKcRqyGoO_jQ1lR51ppwCf1yDg"
+  },
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": true,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

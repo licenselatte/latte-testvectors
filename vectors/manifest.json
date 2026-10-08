@@ -231,6 +231,13 @@
     "name": "lex_exp_boundary_one_second_after"
   },
   {
+    "category": "lex_format",
+    "expect": "reject",
+    "expect_reason": "",
+    "expect_stage": "verify",
+    "name": "lex_grace_over_cap"
+  },
+  {
     "category": "entitlements",
     "expect": "accept",
     "expect_reason": "",

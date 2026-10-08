@@ -1,0 +1,20 @@
+{
+  "name": "lex_grace_over_cap",
+  "category": "lex_format",
+  "description": "exp - iat is 91 days, over the 90-day grace ceiling that also bounds grc: rejected at verify, so a leaked daily key cannot sign a token that works offline until 2099.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "54c1ac06c228590f59f228245d4893d27d932d91113d92be372d0ad626304c9d",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzkwOTQyNDAwLCJpYXQiOjE3ODMwODAwMDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSIsImx0eXBlIjoicGVycGV0dWFsIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.BeGtQ5DApExj3KKxGPhy8NoSjE5YuUqewEjInqdwZcaaDGmJj6_C8BS00IDBcOcn1mwPA2Ov7riLdTwU2ZpqCw",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZWM4ODE4ZGYwYWM2MjhlNzFkNWI1NTkwNjRkYzkwYTljZjBjMDUzMTBiMjM0NDljOGYwMzVhMDUyOWYyMmE4MiJ9.u_oa_oID2mryiRNIt7pe0CCT5SOspZXcaotFZJKmNzM90DlxIyhE1uT9BMJHwTbtCckiLEpFUWAn_oarHdj1Dw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI4M2RhNGYwMzg4NjcwYjJmMDcxZGRiYjQzYjM5ZjE3NDUyY2UxYWUzYzgwOGY3OWQyOGY3M2UzNTQzN2ZiNzIzIn0.0j9-Vp0GyCZOlV8LpSkGT7_HAGK80XiD1L8_EZ_FZG4LKwxy5Gfvn7TSJ_hDwpLq8O7PEP-lRBlJ9YQ4b1HFDg",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIxMDU3YjUzY2E1ZGNiYWYwZTZhMTNkNzNhNjYxM2U5MTMwYTE0YmQyOTBkZTBkMjY5NWFkYzcxNjhlYzA0NzZkIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.lPq-NlpxVK1Cm2llRpb9vNnNUjldGIe_232MRH7CtunzVjVL8Cz_iWfdudDkOKvlru_H_XQtH87Fk1tLJaa3Cw"
+  },
+  "expect": "reject",
+  "expect_stage": "verify",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

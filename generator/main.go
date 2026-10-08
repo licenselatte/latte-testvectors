@@ -623,6 +623,15 @@ func main() {
 		fixtures = append(fixtures, lexCase("lex_exp_boundary_one_second_after",
 			"now == exp + 1s: rejected as grace_expired.",
 			iat, anchor.Add(-time.Second), none, anchor, "reject", "grace_expired", false))
+		iat = anchor.Add(-24 * time.Hour)
+		cs := buildStandardChain()
+		tok := signActivation(cs, activationOpts{
+			iat: iat, exp: iat.Add(91 * 24 * time.Hour), lexFormat: true,
+			ltype: "perpetual", machineID: machineID,
+		})
+		fixtures = append(fixtures, mk(cs, tok, "lex_grace_over_cap", "lex_format",
+			"exp - iat is 91 days, over the 90-day grace ceiling that also bounds grc: rejected at verify, so a leaked daily key cannot sign a token that works offline until 2099.",
+			anchor, machineID, "reject", "verify", "", false))
 	}
 
 	// --- entitlements (docs/typed-entitlements.md §4.4) ---

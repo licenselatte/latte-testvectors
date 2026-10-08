@@ -122,6 +122,8 @@ licence's end, and `lex` carries that end date when the licence has one
 - `GracePeriod` is `exp - iat`.
 - Reject with `hard_expired` when `now > lex`, even if `exp` is later.
 - Otherwise reject with `grace_expired` when `now > exp`.
+- `exp - iat` is held to the same 90-day ceiling as `grc`, rejected at
+  `verify` (`lex_grace_over_cap`).
 
 `exp` is checked here, at the `validate` stage, never by the JWT library
 at `verify`. SDKs accept both formats until every token in the field

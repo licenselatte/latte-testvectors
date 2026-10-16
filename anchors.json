@@ -1,0 +1,81 @@
+{
+  "cases": [
+    {
+      "name": "anchor_first",
+      "description": "Signed by the first trusted root.",
+      "now": "2026-07-04T12:00:00Z",
+      "master_public_keys_hex": [
+        "4b599370120e7824e1e84d3adb2a3b52c2d416da404e01f9a5adf3e26a5a149a",
+        "3490419a7ec7527f17d26d438d9fda6f3bacdfaf37057b73c5315d78c47ec860",
+        "852f9ae00af52484f7cd8463d8881bd6fa810ff48846b20ae27aba015840fad4"
+      ],
+      "machine_id": "test-machine-001",
+      "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.0QicjFpyvZVWZ1oeO0_Uwy4dZIxytFw9Ws68RJNPaBji05_NSG7senrsWgClDrR4URxGwqezDO_OFCal5JrSAA",
+      "chain": {
+        "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiZGVhNDE1Njk2MDlmMWRiNTQ0ZmJjYTQ4ZTUyMDA4ZWE4MDU3Mjg5N2RlMDI5MGVmMWYyN2Q1ZDZjYTQ1NDc2OSJ9.ZmUFuneMWcpfJz3oXOwhKgOx4JBtBwVBfYC0CShGi_GhwbyvIV1cXCeSLK9SQxrYJSNai4aTA-7DORzT8QLGAQ",
+        "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJkMTEwNjgyOTdhYzQzMTQxODE1NWYyNGNlODUxYjA2ZDhhZTc5Y2E1NWIwMjdhNWJhMWJmYjM1YzEwZWQ1N2U4In0.xUV7QivK4JlL4Uy3IVq-2oHriIhHVPgioKJd21CQJwyBHGZLiJWTZ_JOYOXWJgjaTaZT2r8QpU6DwC5rNaXQDw",
+        "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI3ZGM5OTI4NjM3ZGExMmI5ZGVhZWMzNWU3YmNiOTgxYzkyM2EzZDQ1YWNkYzk4ZDZkMjJkNDA3YWNhYzgyNzc2IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.o0aIzUIXWvMpOpw-BoqJre5SfoMCFDgfUAGvyEXa-4bl7Zbj4V1bhLxUtQb0FVPYqdxMaHnI2_kvHaQWkXCZDA"
+      },
+      "expect": "accept",
+      "expect_stage": "none"
+    },
+    {
+      "name": "anchor_middle",
+      "description": "Signed by the middle trusted root: a loop that stops after the first key rejects it.",
+      "now": "2026-07-04T12:00:00Z",
+      "master_public_keys_hex": [
+        "4b599370120e7824e1e84d3adb2a3b52c2d416da404e01f9a5adf3e26a5a149a",
+        "3490419a7ec7527f17d26d438d9fda6f3bacdfaf37057b73c5315d78c47ec860",
+        "852f9ae00af52484f7cd8463d8881bd6fa810ff48846b20ae27aba015840fad4"
+      ],
+      "machine_id": "test-machine-001",
+      "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.IBUEyuBqnBOKgZv35bUltL2lALZaYMkMaHDaF5SNZ9O087rpjb4rSyZr-h5DtxqZ4kG6P6NOl4grsJevZABHCQ",
+      "chain": {
+        "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiMjY5ZDVkMWM3ODdjYWM5MGRlN2MxZDY5YzZhNzM0MmMzNDFhM2NmNDY2MzJjYWI4MGRkOWY0Zjg5MjBjMzk5ZSJ9.O4QnRWTKH2vARc84K_oJyovw0NuPU7V6HjTCcK6-qi5cjZ3LgDilP3XlJ4vnI7ZYZg1GJYt2yRTKGFSkOa9iDQ",
+        "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIwNGIwNmM1NWJlMjliYjQ2MjI0ZGFmODczZTI1Y2EwODE5ZDEyMTEyZWU0MDIxY2I3ZDdjM2EyYjhlODhiM2EyIn0.13fmSzGF7xxC9k03EjvWLLzXSVwvopR3xcMN5tMw-KyrScFPSUJ5vcZXYsFc-uHSBN6LKos6sfjgaH-PDkoaDA",
+        "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJlZjcyZGExZWZiOWIzNDI2ZDZlOTNhYjliMjViOTgyNDI3ZjU5MTYzMDIzYmU1ZTNhZDQzMWMwN2JhZTQ3NmY1IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.JMFo4cz1LHTzdT2QEfdNkA-2kImcrE3i8SGPreI5HnJklr1Me1ucFso--b85JKppT_roEhx0T8-vx1j1sNUNBg"
+      },
+      "expect": "accept",
+      "expect_stage": "none"
+    },
+    {
+      "name": "anchor_last",
+      "description": "Signed by the last trusted root: a loop that keeps only the first or the last error, rather than stopping at the first success, still has to accept.",
+      "now": "2026-07-04T12:00:00Z",
+      "master_public_keys_hex": [
+        "4b599370120e7824e1e84d3adb2a3b52c2d416da404e01f9a5adf3e26a5a149a",
+        "3490419a7ec7527f17d26d438d9fda6f3bacdfaf37057b73c5315d78c47ec860",
+        "852f9ae00af52484f7cd8463d8881bd6fa810ff48846b20ae27aba015840fad4"
+      ],
+      "machine_id": "test-machine-001",
+      "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.T5Hdi0WbC3fH7QGALf_1P0vcxEWXeRHRV2r_kl4ytgIYLXM8ihCrLH47-MvOdudgEKECjuyqpvFuZMN3kHYXAw",
+      "chain": {
+        "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNWNmMDliYzM1Y2E4NjQxYmExNWJkNTA5OGEwY2ZmMWYwMGE3NDA1MDE3ODkyMTdhNGRjM2U2ZjI5ZWVhMWQ0ZiJ9.Ak_84OinP45FT-LFI4MrIF3fuD1N6TMxyF37zTcQO3i0YA4cmuZsWwUExJtgtIKUlvhln3sjLI519yZEMFhLBQ",
+        "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiI1YmVkZGU0Y2JlNjVjMmY2NTA2YzhjNDVkMGJmNDk5MmE5MjhiY2IxYzBmOGJkOTk2ZTdhM2EyMWRiOTI5YTc3In0.m4PqKOyQaJNsS9z4I1sd6qcnTQG08q0xygVJVPkWBPYTUQG8fOwjIKiIRALD4Ri-iUsE4aEDRQUCk02VxK_OAw",
+        "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI5YWY2MjQzZmJhMzg5OGVjZDVmMDI4YWEwMWM1ZmZjZTQyMTlmNjMyZDUzOTFkYjRmYzU2YzIyYzI2NzRlNWViIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.vEu_-RsKZmt73a568yoiNAVQtuz3_7Zo7L9Or6HW65Guv_pY8Ea9uGqFB0KQDJ_Hpj4urArGfNgEhG2iyK7jCQ"
+      },
+      "expect": "accept",
+      "expect_stage": "none"
+    },
+    {
+      "name": "anchor_outside",
+      "description": "Signed by a root that is not in the list.",
+      "now": "2026-07-04T12:00:00Z",
+      "master_public_keys_hex": [
+        "4b599370120e7824e1e84d3adb2a3b52c2d416da404e01f9a5adf3e26a5a149a",
+        "3490419a7ec7527f17d26d438d9fda6f3bacdfaf37057b73c5315d78c47ec860",
+        "852f9ae00af52484f7cd8463d8881bd6fa810ff48846b20ae27aba015840fad4"
+      ],
+      "machine_id": "test-machine-001",
+      "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.yUthWtRM5vBzNdfNC2ZmgajSEtozleFbQU4s3L19GYoKuiX6hqogtmyjOjM12iUzBP0rA28TWoqGnjjVjAmtAw",
+      "chain": {
+        "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNDkyYzRhOTZmNDVlNTk5YzEzMTUxNjI1MDQzZDJlYTg4YzI4MTE1MzE2MGQ4YTEwNjYzZTVhYmRhNTRhZGRlOCJ9.t9O3FeLtIAYgSmC7oX09NMFIbME_W4244lzjtSiK6xWcVWCbQDdswuuqT1-NRBQYuOadHXguX0iaEOsluj8GAg",
+        "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIxMmIwZDhiOGI1YTQ3NzczMzgxZTRkZGE4NjM4ODY2OTA5NzVjMGRhOWE1MThhOWZkZDIxZjUzNzE5YmViNWIxIn0.30nb-caFlpORDjdkqjLJ-zmJuB4xf2ExNj34cuanBDLL3f7YMXyyc3P8WxVg_hKeDIIgX_CIHlz0hjpOPlO8Ag",
+        "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiI4OWMxODJmYjE3MDNmYjY4YjAwMDI0OWQ2ZTA1ZmFjNDk2Y2VmOWYzZmUxMjJjZWYwYzBlODZhZGQ5MjQwZjAxIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.YXKgWcI9-vaqeL5O8pUk-1V3hfEuqu-2Qs6WmWgIFhfSIQAgxMMIgBxDGkXvbbbpQk1OurCMJcBAwrH5vCY5AA"
+      },
+      "expect": "reject",
+      "expect_stage": "verify"
+    }
+  ],
+  "description": "The submaster cert is accepted when any one of the trusted master keys signed it. Run each case through the SDK's list-taking verify with every key in master_public_keys_hex, then validate with machine_id, both at now. expect and expect_stage mean what they mean in vectors/."
+}

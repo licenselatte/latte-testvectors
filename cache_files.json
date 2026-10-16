@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "name": "empty",
+      "description": "A zero-byte file.",
+      "contents": ""
+    },
+    {
+      "name": "legacy_timestamp_token",
+      "description": "The timestamp:token format: a token with no chain.",
+      "contents": "1700000000:eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ"
+    },
+    {
+      "name": "json_null",
+      "description": "The JSON literal null.",
+      "contents": "null"
+    },
+    {
+      "name": "json_array",
+      "description": "A JSON array.",
+      "contents": "[]"
+    },
+    {
+      "name": "json_string",
+      "description": "A JSON string.",
+      "contents": "\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\""
+    },
+    {
+      "name": "json_number",
+      "description": "A JSON number.",
+      "contents": "1700000000"
+    },
+    {
+      "name": "truncated",
+      "description": "A write cut off part-way through the token.",
+      "contents": "{\"token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.ey"
+    },
+    {
+      "name": "token_only_lower",
+      "description": "A valid token and no chain fields.",
+      "contents": "{\"token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\"}"
+    },
+    {
+      "name": "null_chain_lower",
+      "description": "A valid token with every chain field null.",
+      "contents": "{\"timestamp\":1700000000,\"token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"submaster\":null,\"project\":null,\"daily\":null}"
+    },
+    {
+      "name": "number_chain_lower",
+      "description": "A valid token with every chain field a number.",
+      "contents": "{\"timestamp\":1700000000,\"token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"submaster\":1,\"project\":2,\"daily\":3}"
+    },
+    {
+      "name": "empty_chain_lower",
+      "description": "A valid token with every chain field an empty string.",
+      "contents": "{\"timestamp\":1700000000,\"token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"submaster\":\"\",\"project\":\"\",\"daily\":\"\"}"
+    },
+    {
+      "name": "object_chain_lower",
+      "description": "A valid token with every chain field an object.",
+      "contents": "{\"timestamp\":1700000000,\"token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"submaster\":{},\"project\":{},\"daily\":{}}"
+    },
+    {
+      "name": "null_token_lower",
+      "description": "A null token beside a complete chain.",
+      "contents": "{\"timestamp\":1700000000,\"token\":null,\"submaster\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjNlNDc5MWI0ZTAyOWU3ZDkwODA5MjZmOTM5ZWYyNTQxODM3NWVlNDM5N2MxNTZiYzhmNWRjMDFmOGIyOGU3NCJ9.imdoKUIuhsgztZdXNf-Kq5WlBykCD7loCvJj3niOSbsrNf78bCb_LPvWZQoSICRVLQ8TIjzZ_GLjIM69bJQiAQ\",\"project\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIzN2FjNjU5MjQ2YWViYjI5MDFmMTZlYjliNDYxNGZhOTRhZmRiYTNlNmE0ZDQ4ZjU2MTEzNjQ2Y2UxMjA0ZDcxIn0.280JvdqrYpJpzhKbSUfsj7PJTslTlGVwXoZlZpY2bKaWo9ilhy1LXn35T8rjSha2L9i9sRk1dxUDQ7hAj4bCCg\",\"daily\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIwNGI2NWNkMzdmOTFjNzlmMTMwYmVkYzQxNGM4ZTAwYmViYzUxMTg0NzA2MjIwMDdmZDJhMmY5M2M3ZjhkMmQxIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.JyOWe6Al3SGJljrC5GuJxFZ-ZKBrS1fB1ad-fYfi1eecz830mbQsz9FmUU7VF0lKFD1LJ-R9fKzrB1Fnrxf_CQ\"}"
+    },
+    {
+      "name": "number_token_lower",
+      "description": "A numeric token beside a complete chain.",
+      "contents": "{\"timestamp\":1700000000,\"token\":42,\"submaster\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjNlNDc5MWI0ZTAyOWU3ZDkwODA5MjZmOTM5ZWYyNTQxODM3NWVlNDM5N2MxNTZiYzhmNWRjMDFmOGIyOGU3NCJ9.imdoKUIuhsgztZdXNf-Kq5WlBykCD7loCvJj3niOSbsrNf78bCb_LPvWZQoSICRVLQ8TIjzZ_GLjIM69bJQiAQ\",\"project\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIzN2FjNjU5MjQ2YWViYjI5MDFmMTZlYjliNDYxNGZhOTRhZmRiYTNlNmE0ZDQ4ZjU2MTEzNjQ2Y2UxMjA0ZDcxIn0.280JvdqrYpJpzhKbSUfsj7PJTslTlGVwXoZlZpY2bKaWo9ilhy1LXn35T8rjSha2L9i9sRk1dxUDQ7hAj4bCCg\",\"daily\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIwNGI2NWNkMzdmOTFjNzlmMTMwYmVkYzQxNGM4ZTAwYmViYzUxMTg0NzA2MjIwMDdmZDJhMmY5M2M3ZjhkMmQxIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.JyOWe6Al3SGJljrC5GuJxFZ-ZKBrS1fB1ad-fYfi1eecz830mbQsz9FmUU7VF0lKFD1LJ-R9fKzrB1Fnrxf_CQ\"}"
+    },
+    {
+      "name": "token_only_upper",
+      "description": "A valid token and no chain fields.",
+      "contents": "{\"Token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\"}"
+    },
+    {
+      "name": "null_chain_upper",
+      "description": "A valid token with every chain field null.",
+      "contents": "{\"Timestamp\":1700000000,\"Token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"Submaster\":null,\"Project\":null,\"Daily\":null}"
+    },
+    {
+      "name": "number_chain_upper",
+      "description": "A valid token with every chain field a number.",
+      "contents": "{\"Timestamp\":1700000000,\"Token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"Submaster\":1,\"Project\":2,\"Daily\":3}"
+    },
+    {
+      "name": "empty_chain_upper",
+      "description": "A valid token with every chain field an empty string.",
+      "contents": "{\"Timestamp\":1700000000,\"Token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"Submaster\":\"\",\"Project\":\"\",\"Daily\":\"\"}"
+    },
+    {
+      "name": "object_chain_upper",
+      "description": "A valid token with every chain field an object.",
+      "contents": "{\"Timestamp\":1700000000,\"Token\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY2NDAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.AM1dzbkf8oF4Izdf1Isb_DEUsygiHCj-begGbVZ-S8XopU7ICzfS6f2I8rd9DVwy3LTz7BLTWgxJ6ZhE8_a-AQ\",\"Submaster\":{},\"Project\":{},\"Daily\":{}}"
+    },
+    {
+      "name": "null_token_upper",
+      "description": "A null token beside a complete chain.",
+      "contents": "{\"Timestamp\":1700000000,\"Token\":null,\"Submaster\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjNlNDc5MWI0ZTAyOWU3ZDkwODA5MjZmOTM5ZWYyNTQxODM3NWVlNDM5N2MxNTZiYzhmNWRjMDFmOGIyOGU3NCJ9.imdoKUIuhsgztZdXNf-Kq5WlBykCD7loCvJj3niOSbsrNf78bCb_LPvWZQoSICRVLQ8TIjzZ_GLjIM69bJQiAQ\",\"Project\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIzN2FjNjU5MjQ2YWViYjI5MDFmMTZlYjliNDYxNGZhOTRhZmRiYTNlNmE0ZDQ4ZjU2MTEzNjQ2Y2UxMjA0ZDcxIn0.280JvdqrYpJpzhKbSUfsj7PJTslTlGVwXoZlZpY2bKaWo9ilhy1LXn35T8rjSha2L9i9sRk1dxUDQ7hAj4bCCg\",\"Daily\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIwNGI2NWNkMzdmOTFjNzlmMTMwYmVkYzQxNGM4ZTAwYmViYzUxMTg0NzA2MjIwMDdmZDJhMmY5M2M3ZjhkMmQxIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.JyOWe6Al3SGJljrC5GuJxFZ-ZKBrS1fB1ad-fYfi1eecz830mbQsz9FmUU7VF0lKFD1LJ-R9fKzrB1Fnrxf_CQ\"}"
+    },
+    {
+      "name": "number_token_upper",
+      "description": "A numeric token beside a complete chain.",
+      "contents": "{\"Timestamp\":1700000000,\"Token\":42,\"Submaster\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNjNlNDc5MWI0ZTAyOWU3ZDkwODA5MjZmOTM5ZWYyNTQxODM3NWVlNDM5N2MxNTZiYzhmNWRjMDFmOGIyOGU3NCJ9.imdoKUIuhsgztZdXNf-Kq5WlBykCD7loCvJj3niOSbsrNf78bCb_LPvWZQoSICRVLQ8TIjzZ_GLjIM69bJQiAQ\",\"Project\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIzN2FjNjU5MjQ2YWViYjI5MDFmMTZlYjliNDYxNGZhOTRhZmRiYTNlNmE0ZDQ4ZjU2MTEzNjQ2Y2UxMjA0ZDcxIn0.280JvdqrYpJpzhKbSUfsj7PJTslTlGVwXoZlZpY2bKaWo9ilhy1LXn35T8rjSha2L9i9sRk1dxUDQ7hAj4bCCg\",\"Daily\":\"eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIwNGI2NWNkMzdmOTFjNzlmMTMwYmVkYzQxNGM4ZTAwYmViYzUxMTg0NzA2MjIwMDdmZDJhMmY5M2M3ZjhkMmQxIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.JyOWe6Al3SGJljrC5GuJxFZ-ZKBrS1fB1ad-fYfi1eecz830mbQsz9FmUU7VF0lKFD1LJ-R9fKzrB1Fnrxf_CQ\"}"
+    }
+  ],
+  "description": "Cached token files an SDK cannot use. Write contents byte for byte to the file the SDK loads its cache from, load it, and if the loader yields a token and chain, verify them with master_public_keys_hex at now. Every case must end as not activated: the loader yields nothing, or verify rejects with the SDK's ordinary verify error. A crash, a panic or any other exception fails the case. Each shape appears with lowercase and with capitalised field names because the SDKs do not agree on which their own cache writes.",
+  "machine_id": "test-machine-001",
+  "master_public_keys_hex": [
+    "3d2e05ed0f2ee330bf4c55578a383a3c2c0f9114722779bcd62a12454958dae4"
+  ],
+  "now": "2026-07-04T12:00:00Z"
+}

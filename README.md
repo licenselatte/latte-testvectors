@@ -1,14 +1,15 @@
 # latte-testvectors
 
 Shared, language-agnostic test vectors for `latte-go`, `latte-rs`, `latte-py`,
-and `latte-js`. Every SDK's test suite runs every fixture in `vectors/` and
+`latte-js` and `latte-c`. Every SDK's test suite runs every fixture in `vectors/` and
 must agree on the outcome. This is the actual cross-language deliverable,
 proof that all implementations agree, not just that each one has tests.
 
 ## Layout
 
 ```
-generator/    Go program that produces every file in vectors/.
+generator/    Go program that produces every file in vectors/, plus
+              anchors.json and cache_files.json.
               Regenerate with: cd generator && go run . 
 vectors/      The fixtures themselves (checked in, not built by consumers).
               vectors/manifest.json is a flat index of name/category/expect
@@ -209,6 +210,39 @@ the caller supplied none, the platform's machine ID read the way
 `denisbrodbeck/machineid` reads it. A raw ID never leaves the machine. Every
 SDK runs each case through its own hashing function.
 
+## Anchors
+
+`anchors.json` pins the rule the root switch depends on: an SDK embeds a
+list of master public keys and accepts a submaster cert that any one of them
+signed. Each case carries `master_public_keys_hex`, a list, in place of the
+single `master_public_key_hex` in `vectors/`. Run it through the SDK's
+list-taking verify, then validate, at `now`; `expect` and `expect_stage`
+mean what they mean in `vectors/`.
+
+| Case | Pins |
+|---|---|
+| `anchor_first` | Signed by the first root. |
+| `anchor_middle` | Signed by the middle root. A loop that only tries the first key rejects it. |
+| `anchor_last` | Signed by the last root. |
+| `anchor_outside` | Signed by a root that is not in the list: reject at `verify`. |
+
+## Cache files
+
+`cache_files.json` pins what an SDK does with a cached token file it cannot
+use: a legacy `timestamp:token` file, a truncated write, a hand-edited
+field. Write each case's `contents` byte for byte to the file the SDK loads
+its cache from, load it, and when the loader yields a token and chain,
+verify them against `master_public_keys_hex` at `now`. **Every case ends as
+not activated**: the loader yields nothing, or verify rejects with the SDK's
+ordinary verify error. A crash, a panic, or any exception the SDK does not
+otherwise raise fails the case, because the process it takes down is the
+seller's application.
+
+The cache file's field names differ between SDKs, so each shape appears
+twice, with lowercase (`token`, `submaster`) and capitalised (`Token`,
+`Submaster`) names. No case holds a usable chain, so nothing here can be
+accepted.
+
 ## Regenerating fixtures
 
 ```sh
@@ -228,6 +262,9 @@ cd generator
 go run . -only entitlements_
 ```
 
+`-only` matches `anchors.json` and `cache_files.json` by name too, so
+`go run . -only anchors` rewrites that file and leaves the vectors alone.
+
 `manifest.json` is written in full either way — its fields are all
 key-independent — so a filtered run never leaves a name out of the index.
 
@@ -238,7 +275,7 @@ porting task:
 
 ```sh
 cd latte-testvectors && git commit -am "..." && git push
-# in each of latte-go, latte-rs, latte-py, latte-js:
+# in each of latte-go, latte-rs, latte-py, latte-js, latte-c:
 cd testdata && git pull origin main && cd ..
 git add testdata && git commit -m "bump testvectors to <short-sha>"
 ```

@@ -87,7 +87,12 @@ func buildDayChain(dayStart time.Time) chainSet {
 // buildChain mints a full chain whose daily cert is valid from dailyIat to
 // dailyExp; the submaster and project certs comfortably cover anchor.
 func buildChain(dailyIat, dailyExp time.Time) chainSet {
-	master := newKeyPair()
+	return buildChainUnder(newKeyPair(), dailyIat, dailyExp)
+}
+
+// buildChainUnder is buildChain with the root that signs the submaster cert
+// chosen by the caller, so several chains can hang off one set of roots.
+func buildChainUnder(master keyPair, dailyIat, dailyExp time.Time) chainSet {
 	submaster := newKeyPair()
 	project := newKeyPair()
 	daily := newKeyPair()
@@ -806,6 +811,140 @@ func main() {
 	}
 
 	fmt.Printf("wrote %d of %d fixtures + manifest.json to %s\n", written, len(fixtures), outDir)
+
+	for name, build := range map[string]func() any{
+		"anchors.json":     buildAnchors,
+		"cache_files.json": buildCacheFiles,
+	} {
+		if *only != "" && !strings.Contains(name, *only) {
+			continue
+		}
+		writeJSON(filepath.Join(outDir, "..", name), build())
+		fmt.Printf("wrote %s\n", name)
+	}
+}
+
+func writeJSON(path string, v any) {
+	data, err := json.MarshalIndent(v, "", "  ")
+	if err != nil {
+		panic(err)
+	}
+	if err := os.WriteFile(path, append(data, '\n'), 0o644); err != nil {
+		panic(err)
+	}
+}
+
+type anchorCase struct {
+	Name                string    `json:"name"`
+	Description         string    `json:"description"`
+	Now                 time.Time `json:"now"`
+	MasterPublicKeysHex []string  `json:"master_public_keys_hex"`
+	MachineID           string    `json:"machine_id"`
+	Token               string    `json:"token"`
+	Chain               struct {
+		Submaster string `json:"submaster"`
+		Project   string `json:"project"`
+		Daily     string `json:"daily"`
+	} `json:"chain"`
+	Expect      string `json:"expect"`
+	ExpectStage string `json:"expect_stage"`
+}
+
+// buildAnchors pins the any-of-several-roots rule: an SDK embeds a list of
+// master keys and accepts a submaster cert that any one of them signed.
+func buildAnchors() any {
+	roots := []keyPair{newKeyPair(), newKeyPair(), newKeyPair()}
+	trusted := []string{hexPub(roots[0]), hexPub(roots[1]), hexPub(roots[2])}
+
+	mkCase := func(name, description string, signer keyPair, expect, stage string) anchorCase {
+		cs := buildChainUnder(signer, anchor.AddDate(0, 0, -60), anchor.AddDate(0, 0, 60))
+		c := anchorCase{
+			Name: name, Description: description, Now: anchor,
+			MasterPublicKeysHex: trusted, MachineID: machineID,
+			Token: signActivation(cs, activationOpts{
+				iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+				ltype: "expiring", machineID: machineID,
+			}),
+			Expect: expect, ExpectStage: stage,
+		}
+		c.Chain.Submaster, c.Chain.Project, c.Chain.Daily = cs.submasterCert, cs.projectCert, cs.dailyCert
+		return c
+	}
+
+	return map[string]any{
+		"description": "The submaster cert is accepted when any one of the trusted master keys signed it. Run each case through the SDK's list-taking verify with every key in master_public_keys_hex, then validate with machine_id, both at now. expect and expect_stage mean what they mean in vectors/.",
+		"cases": []anchorCase{
+			mkCase("anchor_first", "Signed by the first trusted root.", roots[0], "accept", "none"),
+			mkCase("anchor_middle", "Signed by the middle trusted root: a loop that stops after the first key rejects it.", roots[1], "accept", "none"),
+			mkCase("anchor_last", "Signed by the last trusted root: a loop that keeps only the first or the last error, rather than stopping at the first success, still has to accept.", roots[2], "accept", "none"),
+			mkCase("anchor_outside", "Signed by a root that is not in the list.", newKeyPair(), "reject", "verify"),
+		},
+	}
+}
+
+// buildCacheFiles pins what an SDK does with a cached token file it cannot
+// use. Every case must come out as "not activated", never as a crash or an
+// exception the SDK does not otherwise raise.
+func buildCacheFiles() any {
+	cs := buildStandardChain()
+	tok := signActivation(cs, activationOpts{
+		iat: anchor, exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(7 * 24 * time.Hour / time.Second),
+		ltype: "expiring", machineID: machineID,
+	})
+	obj := func(fields string) string { return "{" + fields + "}" }
+	q := func(s string) string { b, _ := json.Marshal(s); return string(b) }
+	certs := func(token, sub, proj, daily string, upper bool) string {
+		k := func(s string) string {
+			if upper {
+				return q(strings.ToUpper(s[:1]) + s[1:])
+			}
+			return q(s)
+		}
+		return obj(k("timestamp") + ":1700000000," + k("token") + ":" + token + "," +
+			k("submaster") + ":" + sub + "," + k("project") + ":" + proj + "," + k("daily") + ":" + daily)
+	}
+
+	type cacheCase struct {
+		Name        string `json:"name"`
+		Description string `json:"description"`
+		Contents    string `json:"contents"`
+	}
+	var cases []cacheCase
+	add := func(name, description, contents string) {
+		cases = append(cases, cacheCase{name, description, contents})
+	}
+	add("empty", "A zero-byte file.", "")
+	add("legacy_timestamp_token", "The timestamp:token format: a token with no chain.", "1700000000:"+tok)
+	add("json_null", "The JSON literal null.", "null")
+	add("json_array", "A JSON array.", "[]")
+	add("json_string", "A JSON string.", q(tok))
+	add("json_number", "A JSON number.", "1700000000")
+	add("truncated", "A write cut off part-way through the token.", `{"token":`+q(tok)[:40])
+	for _, upper := range []bool{false, true} {
+		s := "lower"
+		if upper {
+			s = "upper"
+		}
+		tk := "token"
+		if upper {
+			tk = "Token"
+		}
+		add("token_only_"+s, "A valid token and no chain fields.", obj(q(tk)+":"+q(tok)))
+		add("null_chain_"+s, "A valid token with every chain field null.", certs(q(tok), "null", "null", "null", upper))
+		add("number_chain_"+s, "A valid token with every chain field a number.", certs(q(tok), "1", "2", "3", upper))
+		add("empty_chain_"+s, "A valid token with every chain field an empty string.", certs(q(tok), `""`, `""`, `""`, upper))
+		add("object_chain_"+s, "A valid token with every chain field an object.", certs(q(tok), "{}", "{}", "{}", upper))
+		add("null_token_"+s, "A null token beside a complete chain.", certs("null", q(cs.submasterCert), q(cs.projectCert), q(cs.dailyCert), upper))
+		add("number_token_"+s, "A numeric token beside a complete chain.", certs("42", q(cs.submasterCert), q(cs.projectCert), q(cs.dailyCert), upper))
+	}
+
+	return map[string]any{
+		"description":            "Cached token files an SDK cannot use. Write contents byte for byte to the file the SDK loads its cache from, load it, and if the loader yields a token and chain, verify them with master_public_keys_hex at now. Every case must end as not activated: the loader yields nothing, or verify rejects with the SDK's ordinary verify error. A crash, a panic or any other exception fails the case. Each shape appears with lowercase and with capitalised field names because the SDKs do not agree on which their own cache writes.",
+		"now":                    anchor,
+		"master_public_keys_hex": []string{hexPub(cs.master)},
+		"machine_id":             machineID,
+		"cases":                  cases,
+	}
 }
 
 func mapStage(expect string) string {

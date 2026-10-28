@@ -11,6 +11,7 @@
     "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJjNmNiNjY1M2JlYWM0NTY3MGNhZGE3NGZjNTRiOTU5ODk5ZWRkMGQzNjU3Y2U4OWQ5YmI2Y2RhMjIzNjk0YWNjIn0.ofWAvG1J9YffVzOFFoNz848Gj8nUGVU_MQHR5hvp017oYlvshYiaGB-7W8MF6P-kAUuTGJeomnWudtt8-CVABw",
     "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIxMWVmOTVhN2YyOGJiYjlkN2Q0MjY1OThmZDY2ZmYyYzY1MGVmYmI5MzVhYWQ5MGIyZDBmNjFlMzA5MmY1NjdlIiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.sEunoxoUmbfaOuLwIorookmB96X98znWofJPSOiErN0OP2vfUy7yR4n2mrUTCvhRjo49frMpQmjdhGHRM-q_AQ"
   },
+  "renewal_failed": true,
   "expect": "accept",
   "expect_stage": "none",
   "expect_reason": "",

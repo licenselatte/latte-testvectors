@@ -1,0 +1,21 @@
+{
+  "name": "renewal_failed_under_60min",
+  "category": "renewal_failed",
+  "description": "Issued 30 minutes ago with a failed renewal flagged: the token is too young to be renewed, so not in the grace period.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "a3a6847051f07bfe35d45c31e53dd30fbdcfa1867ea02b02f19c922155fbcd9c",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTY0NjAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.Sjh1CkDq4j5gn4cPvVLhDuL_ihHTTSZPSZnFbpsu_O7nUjOA-eIW5dXzSC3sYR1g3jMU4ykvcpJ6UUVXxBpwDg",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiMTZlOTYyNGViYTU1NTBhNDljM2FkM2ZlOTlmYzYzYTc0MDQyYWJlMTJkNDcyYjM3MDY1ZDAwMDMxZTU0MzYzMCJ9.TVz_9UYu2uDO9y_Ex8KR_g8FmxbCqLinVqAytjV02BGNvCBKWn6vByk9bxawzDgW-TM6Bx4Ab4sjqdrrMSbIDQ",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIwMzYyN2IyZDEwNGE4MmRjMmJiNjA3NDU3ODE1NDdjZTljZDRiY2M5MjIxOTQzMzAzN2UzZWJkMjFmN2JiNmU2In0.FzC9jq8WwU3hmafJbmo8za1YiAL61t7wypVh9acoFvSPt8-vYC4idvyhcwFE2LZhEC56Al16wpGzVYZtVkTkCA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIyNWZlZmFhNDU5YmJmY2UwOWMxNjE0N2MyM2U4NDc2OWFlODFiMzQ5YzY4OTU1OWNkODVmZTdiOTgxZDFhNjc2IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.l8yyi_CHSY7A322N98fWXBovE0C9lwp08UiOEDa2boIkK_Lm00pUR9gwOJ4lZ8kzSHNbL2v8wbn186bYtbFOCA"
+  },
+  "renewal_failed": true,
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

@@ -1,0 +1,21 @@
+{
+  "name": "renewal_failed_past_grace_deadline",
+  "category": "renewal_failed",
+  "description": "Issued 8 days ago against a 7-day grace window with a failed renewal flagged: the flag does not extend the deadline, rejected as grace_expired.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "da224b028baf1c6979196b7a47bc557f8b43c9e56a8b0c834ed4bc31394bb1d9",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgyNDc1MjAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.3HOJz7Rbo0KhcbzdlD-rGAbB4K7zp926CvShsFrUeo3Akg8hKfGQhpZwJdjeqY6t3IJxbHSIH3nugLJ-_SLWDQ",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiNTBlYTg1NjFlNmQ5OTk5NDBiZDg4NjhhNTU2NDBiNWY0M2RjNmRjNGM4ZTgyMmYwOTE1NjZiNTMzMzczMjJlYiJ9.1yzcQdpjgrJaS0CMP8Lmx9gustT-TpCszUAn5fuo5IbTREA8R21lIaEhcK0-FU8Y6iSUmsOc9DV2HGx7gJnGCw",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiJiMDBjNDRmYTJlOTk1NzJhMjdmODY0NTFjOWY1NTdkOGFhM2QwNjI3NjFhZDI3MDdjYmI3NGMyYWNhOTk5ZTRiIn0.W-sr0Ex9xrESUq0kZ7zicjBxk8HDKXUiYon4uW4fs7hAtZaGk7VN1-hS0dphHXwPP828wO4fG9j5-isTe47iAA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiIxMTBjZjIxM2JjYjkwMWMyYzViNTUyZTY5ZDc5NjM3N2NiYTA4NGVkODgxNDIxMWQ5MTg2ODNlZDIzYjIwMmQ1IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.LxPpmRaSf-Qmf6tNu8ZSr_V2xOeLUWxjfwWml_1fdizAHT4Ae56xJwQi_wsdh1f_4pfBSsBM_ncM_ue---8JAg"
+  },
+  "renewal_failed": true,
+  "expect": "reject",
+  "expect_stage": "validate",
+  "expect_reason": "grace_expired",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

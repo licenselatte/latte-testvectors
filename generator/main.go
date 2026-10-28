@@ -203,6 +203,11 @@ type fixture struct {
 		Daily     string `json:"daily"`
 	} `json:"chain"`
 
+	// RenewalFailed is the verifier's in-memory flag: true when the SDK
+	// tried to renew the token and could not reach the server. It is an
+	// input to in_grace_period, never derived from the token.
+	RenewalFailed bool `json:"renewal_failed"`
+
 	// Expect describes the required outcome. See ../README.md for the
 	// full taxonomy every SDK's fixture runner must implement.
 	Expect        string `json:"expect"`        // "accept" | "reject"
@@ -229,6 +234,12 @@ func (f fixture) withEnt(has bool, ent map[string]any) fixture {
 	if ent != nil {
 		f.ExpectEntitlements = ent
 	}
+	return f
+}
+
+// withRenewalFailed sets the renewal_failed input; mk() leaves it false.
+func (f fixture) withRenewalFailed(failed bool) fixture {
+	f.RenewalFailed = failed
 	return f
 }
 
@@ -279,7 +290,8 @@ func main() {
 		})
 		fixtures = append(fixtures, mk(cs, tok, "valid_in_grace_period", "valid_license",
 			"Issued 2h ago (past the 60-minute renewal marker) with a 7-day grace window; still accepted and InGracePeriod should read true.",
-			anchor, machineID, "accept", "none", "", true))
+			anchor, machineID, "accept", "none", "", true).
+			withRenewalFailed(true))
 	}
 
 	// --- 3. valid, past grace period (expired) — two flavors ---
@@ -458,7 +470,8 @@ func main() {
 		now := iat.AddDate(0, 0, 5)
 		fixtures = append(fixtures, mk(cs, tok, "offline_after_daily_cert_expiry", "clock_skew",
 			"Activated at 23:59 UTC under the server's daily window (00:00 to 00:05 next day), verified five days later inside a 30-day grace period. The daily cert's exp is not checked against the clock, so this must ACCEPT, in grace.",
-			now, machineID, "accept", "none", "", true))
+			now, machineID, "accept", "none", "", true).
+			withRenewalFailed(true))
 	}
 	{
 		// The daily key signed a token dated after its own cert's exp. The
@@ -561,7 +574,8 @@ func main() {
 		// At the exact deadline, sinceActivation (7d) is not < GracePeriod (7d), so InGracePeriod is false.
 		fixtures = append(fixtures, mkBoundary("grace_boundary_exact_deadline", iat.Add(7*24*time.Hour), "accept", "", false))
 		// One second before the deadline, sinceActivation is strictly < GracePeriod, so InGracePeriod is true.
-		fixtures = append(fixtures, mkBoundary("grace_boundary_one_second_before", iat.Add(7*24*time.Hour).Add(-time.Second), "accept", "", true))
+		fixtures = append(fixtures, mkBoundary("grace_boundary_one_second_before", iat.Add(7*24*time.Hour).Add(-time.Second), "accept", "", true).
+			withRenewalFailed(true))
 		fixtures = append(fixtures, mkBoundary("grace_boundary_one_second_after", iat.Add(7*24*time.Hour).Add(time.Second), "reject", "grace_expired", false))
 	}
 
@@ -589,7 +603,8 @@ func main() {
 		iat := anchor.Add(-2 * 24 * time.Hour)
 		fixtures = append(fixtures, lexCase("lex_perpetual_valid",
 			"No lex (perpetual), issued 2 days ago with exp at iat+7d: accepted, and in the grace period.",
-			iat, iat.Add(week), none, anchor, "accept", "", true))
+			iat, iat.Add(week), none, anchor, "accept", "", true).
+			withRenewalFailed(true))
 
 		iat = anchor.Add(-8 * 24 * time.Hour)
 		fixtures = append(fixtures, lexCase("lex_perpetual_offline_too_long",
@@ -609,7 +624,8 @@ func main() {
 		iat = anchor.Add(-2 * 24 * time.Hour)
 		fixtures = append(fixtures, lexCase("lex_exp_cut_short_by_licence_end",
 			"The licence ends tomorrow, so the server set exp = lex instead of iat+7d: accepted, in the grace period.",
-			iat, anchor.Add(24*time.Hour), anchor.Add(24*time.Hour), anchor, "accept", "", true))
+			iat, anchor.Add(24*time.Hour), anchor.Add(24*time.Hour), anchor, "accept", "", true).
+			withRenewalFailed(true))
 
 		iat = anchor.Add(-10 * 24 * time.Hour)
 		fixtures = append(fixtures, lexCase("lex_licence_ended",
@@ -780,6 +796,36 @@ func main() {
 			"An empty ent claim. Identical to entitlements_absent for every can()/limit(), and distinguishable from it only by has_entitlements, which is true here.",
 			anchor, machineID, "accept", "none", "", false).
 			withEnt(true, nil))
+	}
+
+	// --- renewal_failed: in_grace_period needs the flag as well as the age ---
+	// Each token has a 7-day grace window, so only the flag and the age vary.
+	{
+		week := 7 * 24 * time.Hour
+		renewalCase := func(name, description string, age time.Duration, failed bool, expect, reason string) fixture {
+			cs := buildStandardChain()
+			tok := signActivation(cs, activationOpts{
+				iat: anchor.Add(-age), exp: anchor.AddDate(0, 1, 0), graceSeconds: int64(week / time.Second),
+				ltype: "expiring", machineID: machineID,
+			})
+			return mk(cs, tok, name, "renewal_failed", description,
+				anchor, machineID, expect, mapStage(expect), reason, false).
+				withRenewalFailed(failed)
+		}
+		fixtures = append(fixtures,
+			renewalCase("renewal_not_failed_2h_old",
+				"Issued 2h ago, past the 60-minute renewal marker, but no renewal attempt has failed: accepted, and not in the grace period.",
+				2*time.Hour, false, "accept", ""),
+			renewalCase("renewal_failed_under_60min",
+				"Issued 30 minutes ago with a failed renewal flagged: the token is too young to be renewed, so not in the grace period.",
+				30*time.Minute, true, "accept", ""),
+			renewalCase("renewal_failed_exactly_60min",
+				"Issued exactly 60 minutes ago with a failed renewal flagged: the age bound is strict (> 60 minutes), so not in the grace period.",
+				60*time.Minute, true, "accept", ""),
+			renewalCase("renewal_failed_past_grace_deadline",
+				"Issued 8 days ago against a 7-day grace window with a failed renewal flagged: the flag does not extend the deadline, rejected as grace_expired.",
+				8*24*time.Hour, true, "reject", "grace_expired"),
+		)
 	}
 
 	// Write fixtures + manifest.

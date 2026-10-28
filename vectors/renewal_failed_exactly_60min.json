@@ -1,0 +1,21 @@
+{
+  "name": "renewal_failed_exactly_60min",
+  "category": "renewal_failed",
+  "description": "Issued exactly 60 minutes ago with a failed renewal flagged: the age bound is strict (\u003e 60 minutes), so not in the grace period.",
+  "now": "2026-07-04T12:00:00Z",
+  "master_public_key_hex": "9bccc2551aa285679a8f6b164ba3874fb1629c943da11d2a69f438a0ab38b66a",
+  "machine_id": "test-machine-001",
+  "token": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJhaWQiOiJhY3RfMjIyMjIyMjItMjIyMi0yMjIyLTIyMjItMjIyMjIyMjIyMjIyIiwiZXhwIjoxNzg1ODQ0ODAwLCJncmMiOjYwNDgwMCwiaWF0IjoxNzgzMTYyODAwLCJpc3MiOiJsaWNlbnNlbGF0dGUiLCJsdHlwZSI6ImV4cGlyaW5nIiwibWlkIjoidGVzdC1tYWNoaW5lLTAwMSIsInBpZCI6InByb2pfMTExMTExMTEtMTExMS0xMTExLTExMTEtMTExMTExMTExMTExIiwic3ViIjoiQUhBSzg1VDYyOFdaNjM5Q01WSEY4VE5ERFgyNjBaIn0.0AMXgQT8fD_77aZ1W0mQjbRAF9NGlS9iR4estJmyNVHls-FRuz-UWEXrlMLG2_tUsN4y7Ufdw5ddZSxOWobCCg",
+  "chain": {
+    "submaster": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE4MTQ3MDI0MDAsImlhdCI6MTc1MTYzMDQwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwic3BrIjoiMzlhNmJlYzA1NjJlMjQ3YTg5NTViNDdmNTFhZTQ1NWZkYzFiNWQxNTliM2JkMTU5YzY2NDQ5NTE1ZDYyYjFlNiJ9.fIffyUM3HY7oRjiJlDBQO4_WAvmHmESL8EGkB-vSg8kkZUd-slj3d3sO91gx5PUw8Ntl95i8eX6CZYb--IJnBA",
+    "project": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3OTkwNjQwMDAsImlhdCI6MTc2NzUyODAwMCwiaXNzIjoibGljZW5zZWxhdHRlIiwicGlkIjoicHJval8xMTExMTExMS0xMTExLTExMTEtMTExMS0xMTExMTExMTExMTEiLCJwcGsiOiIyMDU2YzI0OWRjMjBmNjE4Y2ZhYzYxMGJlNmNjNTI3ZTY3NWVmYmU2OGFmNTE1YzMzMDQ5NmNjYTMzNTI0ZDlmIn0.HJtO7xkmtVajJuWHdYx0tBf_KBLJI7eR150Thsaj-8TnJKX8PlpnO65F4PiywlyowKrGwbvFf54TtbX8m_fSDA",
+    "daily": "eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJkcGsiOiJhNmQ2ZWRmMTBkNzVmNTRiZTZjMDRlNWE0YTMxZjMxMTQwYzdlNGNhOGI3YmFhOTNhNzZiODI1OTI0NjQ4NDU5IiwiZXhwIjoxNzg4MzUwNDAwLCJpYXQiOjE3Nzc5ODI0MDAsImlzcyI6ImxpY2Vuc2VsYXR0ZSJ9.c8jA-Mfn3s-FFxMna9t9Dp3kBvbuaSrdMdWcdAg6KD8HHBw6v6atoVpnZN4cgJgA31uf5QYQLhlbXFFOs8A2CQ"
+  },
+  "renewal_failed": true,
+  "expect": "accept",
+  "expect_stage": "none",
+  "expect_reason": "",
+  "expect_in_grace_period": false,
+  "expect_has_entitlements": false,
+  "expect_entitlements": {}
+}

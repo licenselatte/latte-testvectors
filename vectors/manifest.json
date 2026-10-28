@@ -278,5 +278,33 @@
     "expect_reason": "",
     "expect_stage": "none",
     "name": "entitlements_empty_object"
+  },
+  {
+    "category": "renewal_failed",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "renewal_not_failed_2h_old"
+  },
+  {
+    "category": "renewal_failed",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "renewal_failed_under_60min"
+  },
+  {
+    "category": "renewal_failed",
+    "expect": "accept",
+    "expect_reason": "",
+    "expect_stage": "none",
+    "name": "renewal_failed_exactly_60min"
+  },
+  {
+    "category": "renewal_failed",
+    "expect": "reject",
+    "expect_reason": "grace_expired",
+    "expect_stage": "validate",
+    "name": "renewal_failed_past_grace_deadline"
   }
 ]

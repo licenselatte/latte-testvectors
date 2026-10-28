@@ -38,6 +38,8 @@ Each `vectors/<name>.json` is:
     "daily": "<daily cert JWT>"
   },
 
+  "renewal_failed": false,
+
   "expect": "accept | reject",
   "expect_stage": "none | verify | validate",
   "expect_reason": "see taxonomy below; empty string when not applicable",
@@ -50,6 +52,16 @@ Each `vectors/<name>.json` is:
 
 `expect_has_entitlements` and `expect_entitlements` are only meaningful for
 an accepted fixture; see "Entitlements" below.
+
+`renewal_failed` is an input, not an expectation: the verifier's in-memory
+flag for "the SDK tried to renew and could not reach the server". Absent
+means `false`. It is never derived from the token. Runners pass it to
+`in_grace_period`, which is true when the licence is still valid on cached
+data, the SDK has tried to renew it and could not reach the server, and the
+offline grace window has not run out. Concretely: `renewal_failed` and
+`60 minutes < age < GracePeriod`, where `age = now - IssuedAt`. Both bounds
+are strict, and a token past its grace deadline is rejected whatever the
+flag says.
 
 **`now` must be injected as the verifier's current time**, not read from the
 real system clock, that's what makes every fixture reproducible regardless
@@ -83,7 +95,7 @@ for each vectors/*.json (skip manifest.json):
         continue
 
     assert fixture.expect == "accept"
-    assert in_grace_period(license, now=fixture.now) == fixture.expect_in_grace_period
+    assert in_grace_period(license, now=fixture.now, renewal_failed=fixture.renewal_failed) == fixture.expect_in_grace_period
 
     assert license.has_entitlements == fixture.expect_has_entitlements
     assert license.entitlements == fixture.expect_entitlements
